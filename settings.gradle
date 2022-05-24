@@ -1,0 +1,54 @@
+/*pluginManagement {
+    repositories {
+        google()
+        gradlePluginPortal()
+        google()
+        maven { url 'https://jitpack.io' }
+        maven { url "https://maven.google.com/" }
+        mavenCentral()
+
+    }
+}*/
+/*pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}*/
+/*dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        jcenter()
+        google()
+        maven { url "https://jitpack.io" }
+        maven { url "https://maven.google.com/" }
+        mavenCentral()
+        maven {
+            url 'https://storage.googleapis.com/r8-releases/raw'
+        }
+        *//*repositories {
+            flatDir {
+                dirs 'libs'
+            }
+        }*//*
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots"
+        }
+
+
+    }
+
+}*/
+/*dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        maven { url 'https://jitpack.io' }
+        maven { url "https://maven.google.com/" }
+        mavenCentral()
+
+    }
+}*/
+rootProject.name = "NewAppopay"
+include ':app'

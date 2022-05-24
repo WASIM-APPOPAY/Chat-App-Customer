@@ -1,0 +1,24 @@
+package com.stuffrs.newappopay.stuffers_business.fragments.bottom_fragment;
+
+import android.app.Dialog;
+import android.os.Bundle;
+import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.stuffrs.newappopay.R;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+
+public class BottomClaveSuccess extends BottomSheetDialogFragment {
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        BottomSheetDialog fBtmShtDialog = (BottomSheetDialog) super.onCreateDialog(savedInstanceState);
+        View mView = View.inflate(getActivity(), R.layout.fragment_bottotm_clave_success, null);
+        fBtmShtDialog.setContentView(mView);
+        return fBtmShtDialog;
+
+    }
+}

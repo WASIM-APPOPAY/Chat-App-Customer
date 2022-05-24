@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "98595867706",
+    "firebase_url": "https://appopaybusiness-default-rtdb.firebaseio.com",
+    "project_id": "appopaybusiness",
+    "storage_bucket": "appopaybusiness.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98595867706:android:c0eec20c1a7d09854af903",
+        "android_client_info": {
+          "package_name": "com.stuffrs.newappopay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "98595867706-2n9kkl5kg32l53c2mi5q4s3fe31pp2oj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.stuffrs.newappopay",
+            "certificate_hash": "77193b34a2cf0402bb7b0814fdb088abd5aa154a"
+          }
+        },
+        {
+          "client_id": "98595867706-t7efcenmb0tttbpbf5jat0v1efpla3pi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDd4H1Lu3dkMkSPMl8FqYoB7pfGT9JCPLA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "98595867706-t7efcenmb0tttbpbf5jat0v1efpla3pi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
