@@ -32,6 +32,9 @@
         android:theme="@style/Theme.NewAppopay"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".stuffers_business.activity.wallet.ScanPayActivity"
+            android:exported="false" />
+        <activity
             android:name=".stuffers_business.activity.wallet.P2PTransferActivity"
             android:exported="false" />
 

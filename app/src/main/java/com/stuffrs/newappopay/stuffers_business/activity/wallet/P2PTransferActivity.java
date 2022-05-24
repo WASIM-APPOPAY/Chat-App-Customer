@@ -236,5 +236,6 @@ public class P2PTransferActivity extends AppCompatActivity implements UserAccoun
         } /*else if (currentFragment instanceof HomeFragment) {
             ((HomeFragment) currentFragment).dismissBottomPin(pin);
         }*/
-    }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
+    }
+    //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
 }

@@ -95,6 +95,7 @@ public class AppoPayFragment extends Fragment {
     private BottotmPinFragment bottotmPinFragment;
     private Dialog mDialog;
     private File mFileSSort;
+    private int mType=0;
 
     public AppoPayFragment() {
         // Required empty public constructor
@@ -106,6 +107,9 @@ public class AppoPayFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mView = inflater.inflate(R.layout.fragment_appo_pay, container, false);
+
+
+
 
         mainAPIInterface = ApiUtils.getAPIService();
         tvCardMerchant = (CardView) mView.findViewById(R.id.tvCardMerchant);
@@ -127,6 +131,7 @@ public class AppoPayFragment extends Fragment {
         btnPayNow = (MyButton) mView.findViewById(R.id.btnPayNow);
         Bundle arguments = this.getArguments();
         resultScan = arguments.getString(AppoConstants.MERCHANTSCANCODE);
+        mType= arguments.getInt(AppoConstants.WHERE, 0);
         btnPayNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -224,8 +229,10 @@ public class AppoPayFragment extends Fragment {
                         DataVaultManager.getInstance(getActivity()).saveUserDetails("");
                         DataVaultManager.getInstance(getActivity()).saveUserAccessToken("");
                         Intent intent = new Intent(getActivity(), SignInActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
+                        intent.putExtra(AppoConstants.WHERE,mType);
+                        getActivity().startActivity(intent);
+                        getActivity().finish();
+
                     } else if (response.code() == 400) {
                         //Log.e(TAG, "onResponse: " + response.toString());
                     }
@@ -279,9 +286,6 @@ public class AppoPayFragment extends Fragment {
 
 
     private void showMerchantDetails() {
-        ///39990571000401411953042|Marhaba|69974712|null|patricia@marhabapty.com|usd
-        //39990571040177995008382|Cerca24|63516303|507|USD|321654876534215|78434
-        //39990571000477995008382|cerca24|63516303|507|support@cerca24.com|USD
         conversionRates = 1;
         tvCardMerchant.setVisibility(View.VISIBLE);
         tvHeader.setText(splitScan[1]);
@@ -347,8 +351,9 @@ public class AppoPayFragment extends Fragment {
                         DataVaultManager.getInstance(getActivity()).saveUserDetails("");
                         DataVaultManager.getInstance(getActivity()).saveUserAccessToken("");
                         Intent intent = new Intent(getActivity(), SignInActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
+                        intent.putExtra(AppoConstants.WHERE,mType);
+                        getActivity().startActivity(intent);
+                        getActivity().finish();
                     } else if (response.code() == 400) {
                         Toast.makeText(getActivity(), "Bad Request", Toast.LENGTH_SHORT).show();
                     }
@@ -407,23 +412,17 @@ public class AppoPayFragment extends Fragment {
                 AccountModel model = new AccountModel();
                 model.setAccountnumber(index.getString(AppoConstants.ACCOUNTNUMBER));
                 if (index.has(AppoConstants.ACCOUNTSTATUS)) {
-                    //Log.e(TAG, "readUserAccounts: AccountStatus : " + index.getString(AppoConstants.ACCOUNTSTATUS));
                     model.setAccountstatus(index.getString(AppoConstants.ACCOUNTSTATUS));
                     model.setCurrencyid(index.getString(AppoConstants.CURRENCYID));
                     model.setCurrencyCode(getCurrency(index.getString(AppoConstants.CURRENCYID)));
                     model.setCurrentbalance(index.getString(AppoConstants.CURRENTBALANCE));
                     mListAccount.add(model);
-                } /*else {
-                    //Log.e(TAG, "readUserAccounts: AccountStatus : " + "null");
-                    model.setAccountstatus("");
-                }*/
+                }
 
             }
             mListTemp = new ArrayList<String>();
 
             if (mListAccount.size() > 0) {
-                //resultScan = "MI1000000000031|CERCA24|63516303|507| support@stuffrs.com|undefined|USD";
-                //for adapter
                 for (int i = 0; i < mListAccount.size(); i++) {
                     mListTemp.add(mListAccount.get(i).getAccountnumber() + "-" + mListAccount.get(i).getCurrencyCode());
                 }
@@ -435,8 +434,7 @@ public class AppoPayFragment extends Fragment {
                     conversionRates = 1;
                     tvConversionRates.setText(String.valueOf(conversionRates));
                 } else {
-                    //Log.e(TAG, "readUserAccounts: no need");
-                    //getConversionBaseRate(mFromPosition);
+
                 }
 
 
@@ -536,8 +534,9 @@ public class AppoPayFragment extends Fragment {
                         DataVaultManager.getInstance(getActivity()).saveUserDetails("");
                         DataVaultManager.getInstance(getActivity()).saveUserAccessToken("");
                         Intent intent = new Intent(getActivity(), SignInActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
+                        intent.putExtra(AppoConstants.WHERE,mType);
+                        getActivity().startActivity(intent);
+                        getActivity().finish();
                     }
                 }
 
@@ -722,8 +721,9 @@ public class AppoPayFragment extends Fragment {
                         DataVaultManager.getInstance(getActivity()).saveUserDetails("");
                         DataVaultManager.getInstance(getActivity()).saveUserAccessToken("");
                         Intent intent = new Intent(getActivity(), SignInActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
+                        intent.putExtra(AppoConstants.WHERE,mType);
+                        getActivity().startActivity(intent);
+                        getActivity().finish();
                     }
                 }
             }

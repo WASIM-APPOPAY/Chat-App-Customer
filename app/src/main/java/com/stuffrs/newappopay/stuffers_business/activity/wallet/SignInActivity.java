@@ -421,6 +421,9 @@ public class SignInActivity extends AppCompatActivity implements AreaSelectListe
             case 3:
                 mIntent = new Intent(SignInActivity.this, P2PTransferActivity.class);
                 break;
+            case 4:
+                mIntent = new Intent(SignInActivity.this, ScanPayActivity.class);
+                break;
 
         }
         mIntent.putExtra(AppoConstants.WHERE, mType);

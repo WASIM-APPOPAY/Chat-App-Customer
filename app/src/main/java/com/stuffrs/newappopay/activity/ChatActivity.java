@@ -125,6 +125,7 @@ import com.stuffrs.newappopay.stuffers_business.activity.wallet.AddMoneyToWallet
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.HomeActivity;
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.MobileRechargeActivity;
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.P2PTransferActivity;
+import com.stuffrs.newappopay.stuffers_business.activity.wallet.ScanPayActivity;
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.SignInActivity;
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.WalletBankActivity;
 import com.stuffrs.newappopay.stuffers_business.utils.AppoConstants;
@@ -450,22 +451,24 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
         dialog.setContentView(R.layout.service_dialog);
         LinearLayout llRecharge = window.findViewById(R.id.llRecharge);
         LinearLayout llPTransfer = window.findViewById(R.id.llPTransfer);
+        LinearLayout llScan = window.findViewById(R.id.llScan);
+
 
         llRecharge.setOnClickListener(view -> {
             String userData = DataVaultManager.getInstance(AppoPayApplication.getInstance()).getVaultValue(DataVaultManager.KEY_USER_DETIALS);
 
-                if (TextUtils.isEmpty(userData)) {
-                    mBottomNotAccount = new BottomNotAccount();
-                    Bundle mBundle = new Bundle();
-                    mBundle.putInt(AppoConstants.WHERE, 2);
-                    mBottomNotAccount.setArguments(mBundle);
-                    mBottomNotAccount.show(getSupportFragmentManager(), mBottomNotAccount.getTag());
-                    mBottomNotAccount.setCancelable(false);
-                } else {
-                    Intent mIntent = new Intent(ChatActivity.this, MobileRechargeActivity.class);
-                    mIntent.putExtra(AppoConstants.WHERE, 2);
-                    startActivity(mIntent);
-                }
+            if (TextUtils.isEmpty(userData)) {
+                mBottomNotAccount = new BottomNotAccount();
+                Bundle mBundle = new Bundle();
+                mBundle.putInt(AppoConstants.WHERE, 2);
+                mBottomNotAccount.setArguments(mBundle);
+                mBottomNotAccount.show(getSupportFragmentManager(), mBottomNotAccount.getTag());
+                mBottomNotAccount.setCancelable(false);
+            } else {
+                Intent mIntent = new Intent(ChatActivity.this, MobileRechargeActivity.class);
+                mIntent.putExtra(AppoConstants.WHERE, 2);
+                startActivity(mIntent);
+            }
 
         });
 
@@ -485,6 +488,21 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
                     mIntent.putExtra(AppoConstants.WHERE, 3);
                     startActivity(mIntent);
                 }
+            }
+        });
+        llScan.setOnClickListener(view -> {
+            String userData = DataVaultManager.getInstance(AppoPayApplication.getInstance()).getVaultValue(DataVaultManager.KEY_USER_DETIALS);
+            if (TextUtils.isEmpty(userData)) {
+                mBottomNotAccount = new BottomNotAccount();
+                Bundle mBundle = new Bundle();
+                mBundle.putInt(AppoConstants.WHERE, 4);
+                mBottomNotAccount.setArguments(mBundle);
+                mBottomNotAccount.show(getSupportFragmentManager(), mBottomNotAccount.getTag());
+                mBottomNotAccount.setCancelable(false);
+            } else {
+                Intent mIntent = new Intent(ChatActivity.this, ScanPayActivity.class);
+                mIntent.putExtra(AppoConstants.WHERE, 4);
+                startActivity(mIntent);
             }
         });
 

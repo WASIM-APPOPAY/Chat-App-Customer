@@ -35,6 +35,7 @@ public class ScanAppopayFragment extends Fragment {
     private View mView;
     private CodeScanner mCodeScanner;
     private InnerScanListener mListener;
+    private int mType=0;
 
     public ScanAppopayFragment() {
         // Required empty public constructor
@@ -45,9 +46,12 @@ public class ScanAppopayFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mView = inflater.inflate(R.layout.fragment_scan_appopay, container, false);
+        //mView = inflater.inflate(R.layout.fragment_scan_appopay, container, false);
 
         mView = inflater.inflate(R.layout.scan_fragment, container, false);
+        Bundle arguments = this.getArguments();
+        mType= arguments.getInt(AppoConstants.WHERE, 0);
+
 
         CodeScannerView scannerView = mView.findViewById(R.id.scanner_view);
         mCodeScanner = new CodeScanner(getActivity(), scannerView);
