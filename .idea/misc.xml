@@ -6,9 +6,12 @@
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/drawable/bg_circle.xml" value="0.184" />
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/drawable/bg_circle2.xml" value="0.184" />
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/drawable/blue_corner_bg.xml" value="0.184" />
+        <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/drawable/ic_lock2.xml" value="0.1835" />
+        <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/drawable/ic_phone2.xml" value="0.1835" />
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/drawable/logout_button_bg.xml" value="0.184" />
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/drawable/no_round_bg1.xml" value="0.187" />
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/drawable/no_round_bg2.xml" value="0.187" />
+        <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/layout-sw320dp/activity_splash.xml" value="0.1453804347826087" />
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/layout/accuracy_layout.xml" value="0.14583333333333334" />
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/layout/action_cart_layout.xml" value="0.18854166666666666" />
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/layout/activity_account.xml" value="0.14583333333333334" />
@@ -76,6 +79,7 @@
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/layout/activity_sign_in.xml" value="0.14583333333333334" />
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/layout/activity_sign_in_chat.xml" value="0.14583333333333334" />
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/layout/activity_sop.xml" value="0.14583333333333334" />
+        <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/layout/activity_splash.xml" value="0.5279605263157895" />
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/layout/activity_tarjeta.xml" value="0.14583333333333334" />
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/layout/activity_term_condition.xml" value="0.14583333333333334" />
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/layout/activity_thankyou.xml" value="0.14583333333333334" />
@@ -417,7 +421,7 @@
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/layout/shopping_orders_fragment.xml" value="0.18854166666666666" />
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/layout/show_time_grid_item.xml" value="0.18854166666666666" />
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/layout/signature_bottom_sheet_dialog.xml" value="0.18854166666666666" />
-        <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/layout/signin.xml" value="0.14583333333333334" />
+        <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/layout/signin.xml" value="0.18" />
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/layout/signup.xml" value="0.33" />
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/layout/slider_header.xml" value="0.14583333333333334" />
         <entry key="..\:/FreeLanceWork/NewAppopay/app/src/main/res/layout/subcategory_fragment.xml" value="0.18854166666666666" />

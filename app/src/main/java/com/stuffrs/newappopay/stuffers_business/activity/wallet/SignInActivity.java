@@ -67,14 +67,14 @@ import static com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager.TA
 public class SignInActivity extends AppCompatActivity implements AreaSelectListener {
 
     MyTextView signup;
-    MyTextView signin1, signin11;
+    MyTextView signin1;
 
     MyEditText edtMobile, edtPassword;
     String strMobile, strPassword;
     ProgressDialog dialog;
     MainAPIInterface mainAPIInterface;
     private String TAG = "TAG";
-    private AppCompatSpinner spCountry;
+
     private ImageView ivRefresh;
 
 
@@ -108,7 +108,7 @@ public class SignInActivity extends AppCompatActivity implements AreaSelectListe
         edtCustomerCountryCode = findViewById(R.id.edtCustomerCountryCode);
         signup = (MyTextView) findViewById(R.id.signup);
         signin1 = (MyTextView) findViewById(R.id.signin1);
-        signin11 = findViewById(R.id.signin11);
+
         tvForgotPassword = findViewById(R.id.tvForgotPassword);
         tvPwdPolicy = findViewById(R.id.tvPwdPolicy);
         getRandomNumberString();
@@ -117,8 +117,6 @@ public class SignInActivity extends AppCompatActivity implements AreaSelectListe
         edtMobile = (MyEditText) findViewById(R.id.edtMobile);
         edtPassword = (MyEditText) findViewById(R.id.edtPassword);
 
-        spCountry = (AppCompatSpinner) findViewById(R.id.spCountry);
-        ivRefresh = (ImageView) findViewById(R.id.ivRefresh);
 
         edtCustomerCountryCode.setExcludedCountries(getString(R.string.info_exclude_countries));
 
@@ -164,14 +162,6 @@ public class SignInActivity extends AppCompatActivity implements AreaSelectListe
             }
         });
 
-
-        signin11.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                throw new RuntimeException();
-            }
-        });
-        signin11.setVisibility(View.GONE);
 
         tvForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -409,6 +399,9 @@ public class SignInActivity extends AppCompatActivity implements AreaSelectListe
     }
 
     private void setType(int mType) {
+        if (mType == 0) {
+            finish();
+        }
         Intent mIntent = null;
         switch (mType) {
             case 1:

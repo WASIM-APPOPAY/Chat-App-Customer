@@ -82,7 +82,7 @@ public class WalletTransferFragment2 extends Fragment {
     private ArrayList<String> mListTemp;
     private List<CurrencyResult> resultCurrency;
     private MyEditText edAmount;
-    private MyButton btnTransfer;
+    private MyTextView btnTransfer;
     private int mFromPosition;
     private String reciveraccountnumber;
     private Dialog dialogTransfer;
@@ -130,7 +130,7 @@ public class WalletTransferFragment2 extends Fragment {
         edAmount = (MyEditText) view.findViewById(R.id.edAmount);
         tvAmountCredit = (MyTextView) view.findViewById(R.id.tvAmountCredit);
         tvConversionRates = (MyTextView) view.findViewById(R.id.tvConversionRates);
-        btnTransfer = (MyButton) view.findViewById(R.id.btnTransfer);
+        btnTransfer = (MyTextView) view.findViewById(R.id.btnTransfer);
         String senderName = Helper.getSenderName();
         tvName.setText(senderName);
         String currantBalance = Helper.getCurrantBalance();
@@ -834,7 +834,8 @@ public class WalletTransferFragment2 extends Fragment {
     private void openScreenshot(File imageFile) {
         Intent intentShareFile = new Intent();
         intentShareFile.setAction(Intent.ACTION_SEND);
-        Uri uriForFile = FileProvider.getUriForFile(getActivity().getApplicationContext(), "com.stuffer.stuffers.fileprovider", imageFile);
+        //Uri uriForFile = FileProvider.getUriForFile(getActivity().getApplicationContext(), "com.stuffer.stuffers.fileprovider", imageFile);
+        Uri uriForFile = FileProvider.getUriForFile(getActivity().getApplicationContext(), "com.stuffrs.newappopay.fileprovider", imageFile);
         intentShareFile.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         intentShareFile.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
         intentShareFile.setType("image/jpeg");

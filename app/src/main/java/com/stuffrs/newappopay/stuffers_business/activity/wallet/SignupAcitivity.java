@@ -35,8 +35,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
-import com.stuffrs.newappopay.stuffers_business.AppoPayApplication;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.AutocompletePrediction;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.net.FetchPlaceRequest;
+import com.google.android.libraries.places.api.net.FetchPlaceResponse;
+import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.stuffrs.newappopay.R;
+import com.stuffrs.newappopay.stuffers_business.AppoPayApplication;
 import com.stuffrs.newappopay.stuffers_business.adapter.address.AutoCompleteAdapter;
 import com.stuffrs.newappopay.stuffers_business.api.ApiUtils;
 import com.stuffrs.newappopay.stuffers_business.api.Constants;
@@ -56,30 +69,11 @@ import com.stuffrs.newappopay.stuffers_business.models.Country.State;
 import com.stuffrs.newappopay.stuffers_business.my_camera.CameraActivity;
 import com.stuffrs.newappopay.stuffers_business.utils.AppoConstants;
 import com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager;
-import com.stuffrs.newappopay.stuffers_business.utils.Helper;
 import com.stuffrs.newappopay.stuffers_business.utils.PasswordUtil;
 import com.stuffrs.newappopay.stuffers_business.utils.TimeUtils;
 import com.stuffrs.newappopay.stuffers_business.views.MyButton;
 import com.stuffrs.newappopay.stuffers_business.views.MyEditText;
 import com.stuffrs.newappopay.stuffers_business.views.MyTextView;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.model.AutocompletePrediction;
-import com.google.android.libraries.places.api.model.Place;
-import com.google.android.libraries.places.api.net.FetchPlaceRequest;
-import com.google.android.libraries.places.api.net.FetchPlaceResponse;
-import com.google.android.libraries.places.api.net.PlacesClient;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -92,7 +86,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 import okhttp3.MediaType;
@@ -119,8 +112,8 @@ public class SignupAcitivity extends AppCompatActivity implements BankSelectList
     private MyTextView tvCountryId;
     List<Result> mListCountry;
     int mCountyId = 0;
-    private FirebaseAuth mAuth;
-    private DatabaseReference reference;
+
+
     private ImageView ivPolicy, image1;
     LinearLayout llIdType;
     private ArrayList<String> mListType;
@@ -160,7 +153,6 @@ public class SignupAcitivity extends AppCompatActivity implements BankSelectList
 
         apiServiceOCR = ApiUtils.getApiServiceOCR();
         newCalendar = Calendar.getInstance();
-        mAuth = FirebaseAuth.getInstance();
         mainAPIInterface = ApiUtils.getAPIService();
 
         btnSignUp = (MyTextView) findViewById(R.id.btnSignUp);

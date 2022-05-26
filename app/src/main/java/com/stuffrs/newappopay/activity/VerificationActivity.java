@@ -234,7 +234,7 @@ public class VerificationActivity extends AppCompatActivity {
 
                         @Override
                         public void onCodeSent(@NonNull String verificationId, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                            super.onCodeSent(verificationId, forceResendingToken);
+                            //super.onCodeSent(verificationId, forceResendingToken);
 
                             authInProgress = true;
                             progressDialog.dismiss();

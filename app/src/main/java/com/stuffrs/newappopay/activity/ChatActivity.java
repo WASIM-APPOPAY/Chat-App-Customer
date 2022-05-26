@@ -128,6 +128,7 @@ import com.stuffrs.newappopay.stuffers_business.activity.wallet.P2PTransferActiv
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.ScanPayActivity;
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.SignInActivity;
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.WalletBankActivity;
+import com.stuffrs.newappopay.stuffers_business.fragments.bottom.chat.TransferChatActivity;
 import com.stuffrs.newappopay.stuffers_business.utils.AppoConstants;
 import com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager;
 import com.stuffrs.newappopay.viewHolders.BaseMessageViewHolder;
@@ -370,6 +371,7 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
     private ImageView ivMenuBottom;
     private int mRequestPosition = 0;
     private BottomNotAccount mBottomNotAccount;
+    private String Regex = "(?<=^| )\\d+(\\.\\d+)?(?=$| )|(?<=^| )\\.\\d+(?=$| )";
 
 
 //    @Override
@@ -1167,6 +1169,16 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
                 if (TextUtils.isEmpty(newMessage.getText().toString())) {
                     Helper.presentToast(this, getString(R.string.hold_record), false);
                 } else {
+                  /*String msg = newMessage.getText().toString().trim();
+                    if (msg.matches(Regex)) {
+                        newMessage.setText("");
+                        Intent intent = new Intent(ChatActivity.this, TransferChatActivity.class);
+                        intent.putExtra(AppoConstants.AMOUNT, msg);
+                        intent.putExtra(AppoConstants.AREACODE,mArea_code);
+                        intent.putExtra(AppoConstants.PHWITHCODE,mPhone_number);
+                        startActivity(intent);
+
+                    }*/
                     newMessage.setText(newMessage.getText().toString().trim());
                     if (!TextUtils.isEmpty(newMessage.getText().toString())) {
                         sendMessage(newMessage.getText().toString(), AttachmentTypes.NONE_TEXT, null);

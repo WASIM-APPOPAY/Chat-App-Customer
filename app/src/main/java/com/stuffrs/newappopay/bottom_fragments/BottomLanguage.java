@@ -14,21 +14,28 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.stuffrs.newappopay.R;
+import com.stuffrs.newappopay.stuffers_business.communicator.LanguageListener;
+import com.stuffrs.newappopay.stuffers_business.views.MyButton;
+import com.stuffrs.newappopay.stuffers_business.views.MyRadioButton;
 
-import com.stuffrs.newappopay.views.MyButton;
-import com.stuffrs.newappopay.views.MyRadioButton;
 
 public class BottomLanguage extends BottomSheetDialogFragment implements View.OnClickListener {
     private BottomSheetBehavior mBehaviour;
     private MyButton btnApplyLan;
     private String lang;
     private MyRadioButton rbSpanish, rbEnglish;
+    private LanguageListener mLanguageListener;
 
 
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btnApplyLan) {
-           dismiss();
+            if (!rbEnglish.isChecked() && !rbSpanish.isChecked()) {
+                Toast.makeText(getActivity(), "Please Select Language", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            mLanguageListener.onLanguageSelect(lang);
         }
     }
 
@@ -76,6 +83,6 @@ public class BottomLanguage extends BottomSheetDialogFragment implements View.On
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-
+        mLanguageListener= (LanguageListener) context;
     }
 }

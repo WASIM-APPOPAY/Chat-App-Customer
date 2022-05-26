@@ -93,7 +93,7 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/tvCheck"
+                        android:id="@+id/tvCheck"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_gravity="center_vertical"

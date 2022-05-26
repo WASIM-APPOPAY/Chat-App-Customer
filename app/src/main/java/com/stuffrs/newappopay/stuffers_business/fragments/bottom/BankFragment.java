@@ -87,7 +87,7 @@ public class BankFragment extends Fragment {
     private PhoneNumberUtil phoneUtil;
     private StartActivityListener mListenerStart;
     private MyTextViewBold tvNameH;
-    private MyTextView tvBalanceH;
+    private MyTextViewBold tvBalanceH;
     private String selectedCountryNameCode;
     private String mDominicaAreaCode = "";
     private MyTextViewBold tvAreaCodeDo;
@@ -106,7 +106,7 @@ public class BankFragment extends Fragment {
         tvAreaCodeDo = (MyTextViewBold) mView.findViewById(R.id.tvAreaCodeDo);
         btnChange = mView.findViewById(R.id.btnChange);
         tvNameH = (MyTextViewBold) mView.findViewById(R.id.tvNameH);
-        tvBalanceH = (MyTextView) mView.findViewById(R.id.tvBalanceH);
+        tvBalanceH = (MyTextViewBold) mView.findViewById(R.id.tvBalanceH);
 
         edtCustomerCountryCode = mView.findViewById(R.id.edtCustomerCountryCode);
         edtphone_number = mView.findViewById(R.id.edtphone_number);

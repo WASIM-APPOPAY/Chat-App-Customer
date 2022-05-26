@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -44,7 +45,7 @@ public class MobileNumberRegistrationActivity extends AppCompatActivity implemen
 
     LinearLayout llVerification, llVerification2;
 
-    FloatingActionButton send_customer_otp, confirm_otp;
+    ImageView send_customer_otp, confirm_otp;
 
     MyTextView btnResendOtp;
     MyTextView txtTimer;
@@ -76,8 +77,8 @@ public class MobileNumberRegistrationActivity extends AppCompatActivity implemen
         tvAreaCodeDo = (MyTextViewBold) findViewById(R.id.tvAreaCodeDo);
         edtCustomerCountryCode = (CountryCodePicker) findViewById(R.id.edtCustomerCountryCode);
 
-        send_customer_otp = (FloatingActionButton) findViewById(R.id.send_customer_otp);
-        confirm_otp = (FloatingActionButton) findViewById(R.id.confirm_otp);
+        send_customer_otp = (ImageView) findViewById(R.id.send_customer_otp);
+        confirm_otp = (ImageView) findViewById(R.id.confirm_otp);
 
         edtCustomerMobileNumber = (MyEditText) findViewById(R.id.edtCustomerMobileNumber);
         edtOtpNumber = (MyEditText) findViewById(R.id.edtOtpNumber);

@@ -21,7 +21,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:padding="20dp"
-                android:src="@mipmap/ic_profile"
+                android:src="@drawable/user_chat"
                  />
 
             <LinearLayout

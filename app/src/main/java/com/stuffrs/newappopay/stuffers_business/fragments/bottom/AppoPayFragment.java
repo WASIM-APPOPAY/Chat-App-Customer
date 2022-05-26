@@ -862,7 +862,8 @@ public class AppoPayFragment extends Fragment {
     private void openScreenshot(File imageFile) {
         Intent intentShareFile = new Intent();
         intentShareFile.setAction(Intent.ACTION_SEND);
-        Uri uriForFile = FileProvider.getUriForFile(getActivity().getApplicationContext(), "com.stuffer.stuffers.fileprovider", imageFile);
+        //Uri uriForFile = FileProvider.getUriForFile(getActivity().getApplicationContext(), "com.stuffer.stuffers.fileprovider", imageFile);
+        Uri uriForFile = FileProvider.getUriForFile(getActivity().getApplicationContext(), "com.stuffrs.newappopay.fileprovider", imageFile);
         intentShareFile.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         intentShareFile.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
         intentShareFile.setType("image/jpeg");
@@ -874,6 +875,7 @@ public class AppoPayFragment extends Fragment {
             getActivity().grantUriPermission(packageName, uriForFile, Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
         }
         startActivityForResult(chooser, 198);
+
     }
 
 
