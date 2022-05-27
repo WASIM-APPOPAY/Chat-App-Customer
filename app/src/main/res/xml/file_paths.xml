@@ -3,4 +3,7 @@
     <external-path
         name="external_files"
         path="." />
+    <cache-path
+        name="data/data/user/0/com.stuffrs.newappopay/cache/documents/"
+        path="." />
 </paths>

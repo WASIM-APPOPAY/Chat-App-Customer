@@ -89,7 +89,7 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
     private MyEditText edAmount;
     private MyTextView tvAmountCredit;
     private MyTextView tvConversionRates;
-    private MyButton btnTransfer;
+    private MyTextView btnTransfer;
     private String fomrcurrencycode, recaccountnumber, recmobilenumber, recareacode, recname, recuserid, fromcurrency, receiveruser;
     private String reciveraccountnumber;
     private String receiverEmail;
@@ -182,7 +182,7 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
         edAmount = (MyEditText) findViewById(R.id.edAmount);
         tvAmountCredit = (MyTextView) findViewById(R.id.tvAmountCredit);
         tvConversionRates = (MyTextView) findViewById(R.id.tvConversionRates);
-        btnTransfer = (MyButton) findViewById(R.id.btnTransfer);
+        btnTransfer = (MyTextView) findViewById(R.id.btnTransfer);
         try {
             edAmount.setText(mAmount);
             Helper.hideKeyboard(edAmount, TransferChatActivity.this);
@@ -288,6 +288,8 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 dismissDialog();
+                btnTransfer.setEnabled(true);
+                btnTransfer.setClickable(true);
                 if (response.isSuccessful()) {
                     String res = new Gson().toJson(response.body());
                     //Log.e(TAG, "onResponse: getprofile :" + res);
@@ -308,8 +310,9 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
                         DataVaultManager.getInstance(TransferChatActivity.this).saveUserDetails("");
                         DataVaultManager.getInstance(TransferChatActivity.this).saveUserAccessToken("");
                         Intent intent = new Intent(TransferChatActivity.this, SignInActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
+                        finish();
                     } else if (response.code() == 400) {
                         Toast.makeText(TransferChatActivity.this, getString(R.string.error_bad_request), Toast.LENGTH_SHORT).show();
                     }
@@ -320,6 +323,8 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
                 dismissDialog();
+                btnTransfer.setEnabled(false);
+                btnTransfer.setClickable(false);
                 //Log.e(TAG, "onFailure: " + t.getMessage().toString());
             }
         });
@@ -336,6 +341,8 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
             public void onResponse(Call<CurrencyResponse> call, Response<CurrencyResponse> response) {
                 dialog.dismiss();
                 if (response.isSuccessful()) {
+                    btnTransfer.setEnabled(true);
+                    btnTransfer.setClickable(true);
                     currencyResponse = new Gson().toJson(response.body().getResult());
                     resultCurrency = response.body().getResult();
                     readUserAccounts();
@@ -346,6 +353,8 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
             public void onFailure(Call<CurrencyResponse> call, Throwable t) {
                 dialog.dismiss();
                 //Log.e(TAG, "onFailure: " + t.getMessage().toString());
+                btnTransfer.setEnabled(false);
+                btnTransfer.setClickable(false);
             }
         });
     }
@@ -501,6 +510,8 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
             @Override
             public void onResponse(@NotNull Call<JsonObject> call, @NotNull Response<JsonObject> response) {
                 dialog.dismiss();
+                btnTransfer.setEnabled(true);
+                btnTransfer.setClickable(true);
                 if (response.isSuccessful()) {
                     String res = new Gson().toJson(response.body());
                     try {
@@ -515,8 +526,9 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
                         DataVaultManager.getInstance(TransferChatActivity.this).saveUserDetails("");
                         DataVaultManager.getInstance(TransferChatActivity.this).saveUserAccessToken("");
                         Intent intent = new Intent(TransferChatActivity.this, SignInActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
+                        finish();
                     }
 
                 }
@@ -528,6 +540,8 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
             public void onFailure(Call<JsonObject> call, Throwable t) {
 
                 dialog.dismiss();
+                btnTransfer.setEnabled(false);
+                btnTransfer.setClickable(false);
                 //Log.e(TAG, "onFailure: " + t.getMessage().toString());
             }
         });
@@ -684,8 +698,9 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
                         DataVaultManager.getInstance(TransferChatActivity.this).saveUserDetails("");
                         DataVaultManager.getInstance(TransferChatActivity.this).saveUserAccessToken("");
                         Intent intent = new Intent(TransferChatActivity.this, SignInActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
+                        finish();
                     } else if (response.code() == 500) {
                         Toast.makeText(TransferChatActivity.this, "Error Code 500", Toast.LENGTH_SHORT).show();
                     } else if (response.code() == 400) {
@@ -861,7 +876,8 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
     private void openScreenshot(File imageFile) {
         Intent intentShareFile = new Intent();
         intentShareFile.setAction(Intent.ACTION_SEND);
-        Uri uriForFile = FileProvider.getUriForFile(getApplicationContext(), "com.stuffer.stuffers.fileprovider", imageFile);
+        //Uri uriForFile = FileProvider.getUriForFile(getApplicationContext(), "com.stuffer.stuffers.fileprovider", imageFile);
+        Uri uriForFile = FileProvider.getUriForFile(getApplicationContext(), "com.stuffrs.newappopay.fileprovider", imageFile);
         intentShareFile.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         intentShareFile.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
         intentShareFile.setType("image/jpeg");

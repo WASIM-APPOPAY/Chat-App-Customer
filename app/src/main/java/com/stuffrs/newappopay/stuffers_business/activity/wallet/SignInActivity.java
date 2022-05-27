@@ -26,6 +26,7 @@ import com.stuffrs.newappopay.stuffers_business.activity.forgopassword.ForgotPas
 import com.stuffrs.newappopay.stuffers_business.api.ApiUtils;
 import com.stuffrs.newappopay.stuffers_business.api.MainAPIInterface;
 import com.stuffrs.newappopay.stuffers_business.communicator.AreaSelectListener;
+import com.stuffrs.newappopay.stuffers_business.fragments.bottom.chat.TransferChatActivity;
 import com.stuffrs.newappopay.stuffers_business.fragments.bottom.chatnotification.Token;
 import com.stuffrs.newappopay.stuffers_business.fragments.bottom_fragment.BottomPasswordPolicy;
 import com.stuffrs.newappopay.stuffers_business.fragments.dialog.AreaCodeDialog;
@@ -93,6 +94,7 @@ public class SignInActivity extends AppCompatActivity implements AreaSelectListe
     private ArrayList<String> mAreaList;
     private AreaCodeDialog mAreaDialog;
     private int mType = 0;
+    String mAmount,mCCode,mMNumber;
 
 
     @Override
@@ -101,6 +103,12 @@ public class SignInActivity extends AppCompatActivity implements AreaSelectListe
         setContentView(R.layout.signin);
         if (getIntent().getExtras() != null) {
             mType = getIntent().getIntExtra(AppoConstants.WHERE, 0);
+            if (mType==5){
+                mAmount=getIntent().getStringExtra(AppoConstants.AMOUNT);
+                mCCode=getIntent().getStringExtra(AppoConstants.AREACODE);
+                mMNumber=getIntent().getStringExtra(AppoConstants.PHWITHCODE);
+
+            }
         }
         tvAreaCodeDo = (MyTextViewBold) findViewById(R.id.tvAreaCodeDo);
         mAuth = FirebaseAuth.getInstance();
@@ -416,6 +424,11 @@ public class SignInActivity extends AppCompatActivity implements AreaSelectListe
                 break;
             case 4:
                 mIntent = new Intent(SignInActivity.this, ScanPayActivity.class);
+                break;
+            case 5:
+                mIntent = new Intent(SignInActivity.this, TransferChatActivity.class);
+                mIntent.putExtra(AppoConstants.AREACODE,mCCode);
+                mIntent.putExtra(AppoConstants.PHWITHCODE,mCCode+mMNumber);
                 break;
 
         }

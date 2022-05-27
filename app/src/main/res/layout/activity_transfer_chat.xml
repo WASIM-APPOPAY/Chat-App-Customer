@@ -5,12 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <include layout="@layout/toolbar" />
+
     <ScrollView
-        android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
         android:layout_weight="1"
         android:fillViewport="true">
 
@@ -26,8 +29,10 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:text="Sender Details"
+                android:textAllCaps="true"
                 android:textAppearance="?attr/textAppearanceBody1"
-                android:textSize="16sp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
 
                 />
 
@@ -42,7 +47,7 @@
                     android:layout_height="100dp"
                     android:padding="15dp"
 
-                    android:src="@mipmap/ic_profile" />
+                    android:src="@drawable/user_chat" />
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -55,7 +60,8 @@
                         android:id="@+id/tvName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sender Name"
+                        android:text="MOE ALHARAZI"
+                        android:textColor="@color/black"
                         android:textSize="20sp" />
 
                     <com.stuffrs.newappopay.stuffers_business.views.MyTextView
@@ -66,6 +72,7 @@
                         android:layout_marginTop="5dp"
                         android:text="Total Balance : "
                         android:textAppearance="?attr/textAppearanceBody1"
+                        android:textColor="#1C1C1C"
                         android:textSize="15sp" />
 
                     <com.stuffrs.newappopay.stuffers_business.views.MyTextView
@@ -75,8 +82,9 @@
                         android:layout_below="@+id/tvName"
                         android:layout_marginTop="5dp"
                         android:layout_toEndOf="@+id/tvHeading"
-                        android:text="$00.00"
+                        android:text="$133.00"
                         android:textAppearance="?attr/textAppearanceBody1"
+                        android:textColor="#101010"
                         android:textSize="15sp" />
 
                 </RelativeLayout>
@@ -136,8 +144,9 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:text="Receiver Details"
+                android:textAllCaps="true"
                 android:textAppearance="?attr/textAppearanceBody1"
-                android:textSize="16sp"
+                android:textSize="20sp"
 
                 />
 
@@ -152,7 +161,7 @@
                     android:layout_height="100dp"
                     android:padding="15dp"
 
-                    android:src="@mipmap/ic_profile" />
+                    android:src="@drawable/user_chat" />
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -166,6 +175,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Receiver Name"
+                        android:textColor="@color/black"
                         android:textSize="20sp" />
 
                     <com.stuffrs.newappopay.stuffers_business.views.MyTextView
@@ -186,8 +196,8 @@
                         android:layout_below="@+id/tvName1"
                         android:layout_marginTop="5dp"
                         android:layout_toEndOf="@+id/tvHeading1"
-                        android:text="00.00"
                         android:textAppearance="?attr/textAppearanceBody1"
+                        android:textColor="#1C1C1C"
                         android:textSize="15sp" />
 
                 </RelativeLayout>
@@ -246,16 +256,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:gravity="center"
                     android:padding="8dp"
                     android:text="@string/info_amount_to_be_transfer"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <com.stuffrs.newappopay.stuffers_business.views.MyEditText
                     android:id="@+id/edAmount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
                     android:background="@null"
                     android:digits="0123456789."
                     android:drawableLeft="@drawable/ic_attach_money_recharge"
@@ -275,6 +288,35 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="2dp"
                 android:background="@color/grey_light_secondary" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/blue_rounded_bg"
+                android:gravity="center"
+                android:minWidth="200dp"
+                android:minHeight="45dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/icon_transfer_money" />
+
+                <com.stuffrs.newappopay.stuffers_business.views.MyTextView
+                    android:id="@+id/btnTransfer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/info_transfer"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -349,18 +391,61 @@
         </LinearLayout>
     </ScrollView>
 
-    <com.stuffrs.newappopay.stuffers_business.views.MyButton
-        android:id="@+id/btnTransfer"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
+        android:background="@drawable/rounder_top_corner"
+        android:orientation="vertical">
 
-        android:layout_marginTop="15dp"
 
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/blue_rounded_bg"
-        android:padding="20dp"
-        android:text="@string/info_transfer"
-        android:textAllCaps="true"
-        android:textColor="@color/white" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="2dp"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:padding="15dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bottom_logo_union" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:padding="20sp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bottom_logo_2" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:padding="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_quick_pass" />
+
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:padding="5dp"
+                android:src="@drawable/wallet_card140" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

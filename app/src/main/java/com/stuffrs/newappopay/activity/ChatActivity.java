@@ -157,6 +157,9 @@ import java.util.List;
 import ezvcard.Ezvcard;
 import ezvcard.VCard;
 import ezvcard.io.chain.ChainingTextStringParser;
+import io.michaelrocks.libphonenumber.android.NumberParseException;
+import io.michaelrocks.libphonenumber.android.PhoneNumberUtil;
+import io.michaelrocks.libphonenumber.android.Phonenumber;
 
 
 public class ChatActivity extends BaseActivity implements OnMessageItemClick, MessageAttachmentRecordingViewHolder.RecordingViewInteractor, View.OnClickListener, ImagePickerCallback, FilePickerCallback, AudioPickerCallback, VideoPickerCallback, MoreListener, ProceedRequest {
@@ -169,6 +172,7 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
     private static final int REQUEST_PERMISSION_CALL = 951;
     private static final int FIREBASE_MESSAGE_QUERY_LIMIT = 50;
     private static String EXTRA_DATA_CHAT = "extradatachat";
+    private static String MOBILE_NUMBER="mobilenumber";
     private static String EXTRA_DATA_LIST = "extradatalist";
     private static String DELETE_TAG = "deletetag";
     private MessageAdapter messageAdapter;
@@ -372,6 +376,10 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
     private int mRequestPosition = 0;
     private BottomNotAccount mBottomNotAccount;
     private String Regex = "(?<=^| )\\d+(\\.\\d+)?(?=$| )|(?<=^| )\\.\\d+(?=$| )";
+    private String mMobileNumber;
+    private PhoneNumberUtil phoneUtil;
+    private String mCCode,mMNumber;
+    private String msg;
 
 
 //    @Override
@@ -513,7 +521,23 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
 
         dialog.show();
     }
+    public void passPhoneNumber(String mMobileNumber) {
 
+        try {
+            // phone must begin with '+'
+            if (phoneUtil == null) {
+                phoneUtil = PhoneNumberUtil.createInstance(ChatActivity.this);
+            }
+            Phonenumber.PhoneNumber numberProto = phoneUtil.parse("+"+mMobileNumber, "");
+             mCCode = String.valueOf(numberProto.getCountryCode());
+            Log.e("TAG", "onActivityResult: " + mCCode);
+             mMNumber = String.valueOf(numberProto.getNationalNumber());
+            Log.e("TAG", "onActivityResult: " + mMNumber);
+
+        } catch (NumberParseException e) {
+            System.err.println("NumberParseException was thrown: " + e.toString());
+        }
+    }
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -522,6 +546,10 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
         rvBottomChat = (RecyclerView) findViewById(R.id.rvBottomChat);
         rvBottomChat.setLayoutManager(new GridLayoutManager(this, 4));
         Intent intent = getIntent();
+        if (intent.hasExtra(MOBILE_NUMBER)){
+            mMobileNumber = intent.getStringExtra(MOBILE_NUMBER);
+             passPhoneNumber(mMobileNumber);
+        }
         if (intent.hasExtra(EXTRA_DATA_CHAT)) {
             chat = intent.getParcelableExtra(EXTRA_DATA_CHAT);
             Helper.CURRENT_CHAT_ID = chat.getUserId();
@@ -1169,21 +1197,40 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
                 if (TextUtils.isEmpty(newMessage.getText().toString())) {
                     Helper.presentToast(this, getString(R.string.hold_record), false);
                 } else {
-                  /*String msg = newMessage.getText().toString().trim();
+                   msg = newMessage.getText().toString().trim();
                     if (msg.matches(Regex)) {
                         newMessage.setText("");
-                        Intent intent = new Intent(ChatActivity.this, TransferChatActivity.class);
-                        intent.putExtra(AppoConstants.AMOUNT, msg);
-                        intent.putExtra(AppoConstants.AREACODE,mArea_code);
-                        intent.putExtra(AppoConstants.PHWITHCODE,mPhone_number);
-                        startActivity(intent);
+                        String userData = DataVaultManager.getInstance(AppoPayApplication.getInstance()).getVaultValue(DataVaultManager.KEY_USER_DETIALS);
+                        if (TextUtils.isEmpty(userData)) {
+                            mBottomNotAccount = new BottomNotAccount();
+                            Bundle mBundle = new Bundle();
+                            mBundle.putInt(AppoConstants.WHERE, 5);
+                            mBottomNotAccount.setArguments(mBundle);
+                            mBottomNotAccount.show(getSupportFragmentManager(), mBottomNotAccount.getTag());
+                            mBottomNotAccount.setCancelable(false);
+                        } else {
+                            /*Intent mIntent = new Intent(ChatActivity.this, ScanPayActivity.class);
+                            mIntent.putExtra(AppoConstants.WHERE, 4);
+                            startActivity(mIntent);*/
+                            Intent intent = new Intent(ChatActivity.this, TransferChatActivity.class);
+                            intent.putExtra(AppoConstants.AMOUNT, msg);
+                            intent.putExtra(AppoConstants.WHERE, 5);
+                            intent.putExtra(AppoConstants.AREACODE,mCCode);
+                            intent.putExtra(AppoConstants.PHWITHCODE,mCCode+mMNumber);
+                            startActivity(intent);
+                        }
 
-                    }*/
-                    newMessage.setText(newMessage.getText().toString().trim());
-                    if (!TextUtils.isEmpty(newMessage.getText().toString())) {
-                        sendMessage(newMessage.getText().toString(), AttachmentTypes.NONE_TEXT, null);
-                        newMessage.setText("");
+
+
                     }
+                   else {
+                        newMessage.setText(newMessage.getText().toString().trim());
+                        if (!TextUtils.isEmpty(newMessage.getText().toString())) {
+                            sendMessage(newMessage.getText().toString(), AttachmentTypes.NONE_TEXT, null);
+                            newMessage.setText("");
+                        }
+                    }
+
                 }
                 break;
             case R.id.chatToolbarContent:
@@ -2012,6 +2059,7 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
     public static Intent newIntent(Context context, ArrayList<Message> forwardMessages, Chat chat) {
         //intent contains user to chat with and message forward list if any.
         Intent intent = new Intent(context, ChatActivity.class);
+        intent.putExtra(MOBILE_NUMBER,chat.getUserId());
         intent.putExtra(EXTRA_DATA_CHAT, chat);
         if (forwardMessages == null)
             forwardMessages = new ArrayList<>();
@@ -2200,8 +2248,18 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
     @Override
     public void onProceedRequest(int mType) {
         mBottomNotAccount.dismiss();
-        Intent mIntent = new Intent(ChatActivity.this, SignInActivity.class);
-        mIntent.putExtra(AppoConstants.WHERE, mType);
-        startActivity(mIntent);
+        if (mType==5){
+            Intent intent = new Intent(ChatActivity.this, TransferChatActivity.class);
+            intent.putExtra(AppoConstants.AMOUNT, msg);
+            intent.putExtra(AppoConstants.WHERE, 5);
+            intent.putExtra(AppoConstants.AREACODE,mCCode);
+            intent.putExtra(AppoConstants.PHWITHCODE,mCCode+mMNumber);
+            startActivity(intent);
+        }else {
+            Intent mIntent = new Intent(ChatActivity.this, SignInActivity.class);
+            mIntent.putExtra(AppoConstants.WHERE, mType);
+            startActivity(mIntent);
+        }
+
     }
 }
