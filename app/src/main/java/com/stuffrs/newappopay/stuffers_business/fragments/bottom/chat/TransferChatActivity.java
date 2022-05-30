@@ -3,14 +3,17 @@ package com.stuffrs.newappopay.stuffers_business.fragments.bottom.chat;
 import static com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager.KEY_ACCESSTOKEN;
 import static com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager.KEY_USER_DETIALS;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import android.app.ProgressDialog;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -19,7 +22,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Parcelable;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
@@ -32,8 +39,21 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.kbeanie.multipicker.utils.FileUtils;
+import com.stuffrs.newappopay.activity.ChatActivity;
+import com.stuffrs.newappopay.model.Attachment;
+import com.stuffrs.newappopay.model.AttachmentTypes;
+import com.stuffrs.newappopay.model.Chat;
+import com.stuffrs.newappopay.model.Message;
+import com.stuffrs.newappopay.model.User;
+import com.stuffrs.newappopay.services.UploadAndSendService;
 import com.stuffrs.newappopay.stuffers_business.AppoPayApplication;
 import com.stuffrs.newappopay.R;
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.SignInActivity;
@@ -106,7 +126,15 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
     private AlertDialog dialogTransfer;
     private AlertDialog mDialog;
     private File mFileSSort;
+    private static String EXTRA_DATA_CHAT = "extradatachat";
     private String mFromCId, mFromCCode;
+
+    protected User userMe;
+    private com.stuffrs.newappopay.Utils.Helper helper;
+    private TransferChatActivity mContext;
+    private ArrayList<String> userPlayerIds = new ArrayList<>();
+    protected DatabaseReference usersRef;
+    private Chat chat;
 
     private void setupActionBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -145,33 +173,32 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
 
     @Override
     public void onBackPressed() {
-
         finish();
-        /*int backStackEntryCount = getSupportFragmentManager().getBackStackEntryCount();
-        if (backStackEntryCount == 1) {
-            super.onBackPressed();
-            finish();
-        } else if (backStackEntryCount == 2) {
-            String toolbarTitle = "e-TimePayTrack" + "<br>" + "<small><i>" + " OD History" + "</i></small>";
-            // tvHeader.setText(Html.fromHtml(toolbarTitle));
-            getSupportFragmentManager().popBackStackImmediate();
-        }*/
-
-        /*Fragment fragment = getSupportFragmentManager().findFragmentByTag(TAG_FRAGMENT);
-        if (fragment.allowBackPressed()) { // and then you define a method allowBackPressed with the logic to allow back pressed or not
-            super.onBackPressed();
-        }*/
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer_chat);
+        mContext = this;
         setupActionBar();
+        helper = new com.stuffrs.newappopay.Utils.Helper(TransferChatActivity.this);
+        userMe = helper.getLoggedInUser();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();//get firebase instance
+        usersRef = firebaseDatabase.getReference(com.stuffrs.newappopay.Utils.Helper.REF_USERS);//instantiate user's firebase reference
+        Intent intent = getIntent();
+        if (intent.hasExtra(EXTRA_DATA_CHAT)) {
+            chat = intent.getParcelableExtra(EXTRA_DATA_CHAT);
+            com.stuffrs.newappopay.Utils.Helper.CURRENT_CHAT_ID = chat.getUserId();
+//
+        }
+        usersRef.child(chat.getUserId()).addValueEventListener(userValueChangeListener);
+        usersRef.child(chat.getUserId()).child("userPlayerId").addListenerForSingleValueEvent(singleValueEventListener);
         mainAPIInterface = ApiUtils.getAPIService();
-        String mAmount = getIntent().getStringExtra(AppoConstants.AMOUNT);
-        String mAreaCode = getIntent().getStringExtra(AppoConstants.AREACODE);
-        String mPhWithCode = getIntent().getStringExtra(AppoConstants.PHWITHCODE);
+        String mAmount = intent.getStringExtra(AppoConstants.AMOUNT);
+        String mAreaCode = intent.getStringExtra(AppoConstants.AREACODE);
+        Log.e(TAG, "onCreate: "+mAreaCode );
+        String mPhWithCode = intent.getStringExtra(AppoConstants.PHWITHCODE);
 
         tvFromAccount = (MyTextView) findViewById(R.id.tvFromAccount);
         tvName = (MyTextViewBold) findViewById(R.id.tvName);
@@ -216,6 +243,7 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
         String substring = mPhWithCode.substring(mAreaCode.length());
         Log.e(TAG, "onCreate: phone number : "+substring );
         onSearchRequest(substring, mAreaCode);
+
 
         edAmount.addTextChangedListener(new TextWatcher() {
             @Override
@@ -834,27 +862,43 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
         Bitmap bitmap = getScreenShot(rootLayout);
         Date now = new Date();
         android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
+        String path;
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.Q){
 
-        mFileSSort = new File(getCacheDir(), "screen_short_" + now + ".jpeg");
-        try {
-            boolean newFile = mFileSSort.createNewFile();
-            if (newFile) {
-                ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
-                byte[] bitmapdata = bos.toByteArray();
-                FileOutputStream fos = null;
-                try {
-                    fos = new FileOutputStream(mFileSSort);
-                    fos.write(bitmapdata);
-                    fos.flush();
-                    fos.close();
-                    openScreenshot(mFileSSort);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath()+ File.separator+"/YourDirName";
+        }else {
+            path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/YourDirName";
+        }
+
+        File dir = new File(path);
+        if (!dir.exists())
+            dir.mkdirs();
+        String uniqueFileName = Helper.getUniqueFileName();
+        mFileSSort = new File(dir, uniqueFileName);
+
+        //mFileSSort = new File(mFile, "screen_short_" + now + ".jpeg");
+        boolean newFile = true;//mFileSSort.createNewFile();
+        if (newFile) {
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
+            byte[] bitmapdata = bos.toByteArray();
+            FileOutputStream fos = null;
+            try {
+                //mFileSSort.createNewFile();
+                fos = new FileOutputStream(mFileSSort);
+                fos.write(bitmapdata);
+                fos.flush();
+                fos.close();
+                /*new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        uploadImage(mFileSSort.getPath());
+                    }
+                },1000);*/
+                openScreenshot(mFileSSort);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
 
@@ -890,6 +934,7 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
         }
       startActivityForResult(chooser,198);
 
+
     }
 
     private void showBalanceErrorDailog() {
@@ -922,11 +967,110 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Log.e(TAG, "onActivityResult: called 197 ");
+        Log.e(TAG, "onActivityResult: "+mFileSSort.getPath() );
+        uploadImage(mFileSSort.getPath());
         redirectHome();
         /*if (resultCode == 198) {
             Log.e(TAG, "onActivityResult: called 198 ");
 */
         }
+
+    private void uploadImage(String filePath) {
+        newFileUploadTask(filePath, AttachmentTypes.IMAGE, null);
+    }
+
+    private User user;
+    private ValueEventListener singleValueEventListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            String playerId = dataSnapshot.getValue(String.class);
+            if (playerId != null) userPlayerIds.add(playerId);
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+        }
+    };
+    private ValueEventListener userValueChangeListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            if (mContext != null) {
+                User user = dataSnapshot.getValue(User.class);
+                if (user != null) {
+                    TransferChatActivity.this.user = user;
+                }
+            }
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+        }
+    };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (usersRef != null && userValueChangeListener != null)
+            usersRef.removeEventListener(userValueChangeListener);
+    }
+
+    private void checkAndCopy(String directory, File source) {
+        //Create and copy file content
+        File file = new File(directory);
+        boolean dirExists = file.exists();
+        if (!dirExists)
+            dirExists = file.mkdirs();
+        if (dirExists) {
+            try {
+                file = new File(directory, Uri.fromFile(source).getLastPathSegment());
+                boolean fileExists = file.exists();
+                if (!fileExists)
+                    fileExists = file.createNewFile();
+                if (fileExists && file.length() == 0) {
+                    FileUtils.copyFile(source, file);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void newFileUploadTask(String filePath,
+                                   @AttachmentTypes.AttachmentType final int attachmentType, final Attachment attachment) {
+
+
+        final File fileToUpload = new File(filePath);
+
+
+        checkAndCopy(com.stuffrs.newappopay.Utils.Helper.getFileBase(this) + "/" + AttachmentTypes.getTypeName(attachmentType) + "/.sent/", fileToUpload);//Make a copy
+
+
+        Message message = new Message();
+        message.setChatId(chat.getChatChild());
+        message.setSenderId(userMe.getId());
+        message.setSenderName(userMe.getName());
+        //message.setSenderStatus(userMe.getStatus());
+        message.setSenderImage(userMe.getImage());
+        message.setSent(false);
+        message.setDelivered(false);
+        message.setRecipientId(user != null ? user.getId() : chat.getUserId());
+        message.setRecipientName(user != null ? user.getName() : chat.getChatName());
+        message.setRecipientImage(user != null ? user.getImage() : chat.getChatImage());
+        //message.setRecipientStatus(user != null ? user.getStatus() : chat.getChatStatus());
+        //message.setId(chatRef.child(chat.getChatChild()).push().getKey());
+
+        Intent intent = new Intent(this, UploadAndSendService.class);
+        intent.putExtra("attachment", attachment);
+        intent.putExtra("attachment_type", attachmentType);
+        intent.putExtra("attachment_file_path", filePath);
+        intent.putExtra("attachment_message", message);
+        intent.putExtra("attachment_player_ids", userPlayerIds);
+        ContextCompat.startForegroundService(this, intent);
+
+    }
+
     }
     /*@Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -936,3 +1080,6 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
             redirectHome();
         }
     }*/
+
+
+

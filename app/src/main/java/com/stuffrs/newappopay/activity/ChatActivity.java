@@ -496,7 +496,7 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
                 } else {
                     Intent mIntent = new Intent(ChatActivity.this, P2PTransferActivity.class);
                     mIntent.putExtra(AppoConstants.WHERE, 3);
-                    startActivity(mIntent);
+                    startActivityForResult(mIntent,100);
                 }
             }
         });
@@ -1216,6 +1216,7 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
                             intent.putExtra(AppoConstants.AMOUNT, msg);
                             intent.putExtra(AppoConstants.WHERE, 5);
                             intent.putExtra(AppoConstants.AREACODE,mCCode);
+                            intent.putExtra(EXTRA_DATA_CHAT, chat);
                             intent.putExtra(AppoConstants.PHWITHCODE,mCCode+mMNumber);
                             startActivity(intent);
                         }
@@ -1747,6 +1748,10 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
         newFileUploadTask(filePath, AttachmentTypes.IMAGE, null);
     }
 
+    /*public static  void uploadChatImage(String filePath){
+        newFileUploadTask(filePath, AttachmentTypes.IMAGE, null);
+    }*/
+
     private void uploadThumbnail(final String filePath) {
         Toast.makeText(this, R.string.just_moment, Toast.LENGTH_LONG).show();
         File file = new File(filePath);
@@ -2027,6 +2032,8 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
     public void OnMessageLongClick(Message message, int position) {
         if (!Helper.CHAT_CAB) {//Prepare selection if not in selection mode
             prepareToSelect();
+            String s = new Gson().toJson(message);
+            Log.e("TAG", "OnMessageLongClick: "+s );
             message.setSelected(true);
             messageAdapter.notifyItemChanged(position);
             countSelected++;
@@ -2249,11 +2256,12 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
     public void onProceedRequest(int mType) {
         mBottomNotAccount.dismiss();
         if (mType==5){
-            Intent intent = new Intent(ChatActivity.this, TransferChatActivity.class);
+            Intent intent = new Intent(ChatActivity.this, SignInActivity.class);
             intent.putExtra(AppoConstants.AMOUNT, msg);
             intent.putExtra(AppoConstants.WHERE, 5);
             intent.putExtra(AppoConstants.AREACODE,mCCode);
             intent.putExtra(AppoConstants.PHWITHCODE,mCCode+mMNumber);
+            intent.putExtra(EXTRA_DATA_CHAT, chat);
             startActivity(intent);
         }else {
             Intent mIntent = new Intent(ChatActivity.this, SignInActivity.class);

@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatSpinner;
 
 import com.stuffrs.newappopay.activity.ChatActivity;
+import com.stuffrs.newappopay.model.Chat;
 import com.stuffrs.newappopay.stuffers_business.AppoPayApplication;
 import com.stuffrs.newappopay.stuffers_business.MyContextWrapper;
 import com.stuffrs.newappopay.R;
@@ -95,7 +96,8 @@ public class SignInActivity extends AppCompatActivity implements AreaSelectListe
     private AreaCodeDialog mAreaDialog;
     private int mType = 0;
     String mAmount,mCCode,mMNumber;
-
+    private static String EXTRA_DATA_CHAT = "extradatachat";
+    private Chat chat;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -107,8 +109,11 @@ public class SignInActivity extends AppCompatActivity implements AreaSelectListe
                 mAmount=getIntent().getStringExtra(AppoConstants.AMOUNT);
                 mCCode=getIntent().getStringExtra(AppoConstants.AREACODE);
                 mMNumber=getIntent().getStringExtra(AppoConstants.PHWITHCODE);
+                chat = getIntent().getParcelableExtra(EXTRA_DATA_CHAT);
 
             }
+        }else {
+            mType=0;
         }
         tvAreaCodeDo = (MyTextViewBold) findViewById(R.id.tvAreaCodeDo);
         mAuth = FirebaseAuth.getInstance();
@@ -409,6 +414,7 @@ public class SignInActivity extends AppCompatActivity implements AreaSelectListe
     private void setType(int mType) {
         if (mType == 0) {
             finish();
+            return;
         }
         Intent mIntent = null;
         switch (mType) {
@@ -427,8 +433,10 @@ public class SignInActivity extends AppCompatActivity implements AreaSelectListe
                 break;
             case 5:
                 mIntent = new Intent(SignInActivity.this, TransferChatActivity.class);
+                mIntent.putExtra(AppoConstants.AMOUNT,mAmount);
                 mIntent.putExtra(AppoConstants.AREACODE,mCCode);
-                mIntent.putExtra(AppoConstants.PHWITHCODE,mCCode+mMNumber);
+                mIntent.putExtra(EXTRA_DATA_CHAT, chat);
+                mIntent.putExtra(AppoConstants.PHWITHCODE,mMNumber);
                 break;
 
         }
