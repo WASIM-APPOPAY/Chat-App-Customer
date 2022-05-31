@@ -24,12 +24,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.stuffrs.newappopay.stuffers_business.activity.lunex_card.LunexMoreActivity;
-import com.stuffrs.newappopay.stuffers_business.activity.shop_mall.ShopAdapter;
+
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.AccountActivity;
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.MerchantMapsActivity;
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.PayNowActivity;
 import com.stuffrs.newappopay.stuffers_business.adapter.recyclerview.AllGiftProduct;
-import com.stuffrs.newappopay.stuffers_business.api.Constants;
 import com.stuffrs.newappopay.stuffers_business.communicator.OnTransactionPinSuccess;
 import com.stuffrs.newappopay.stuffers_business.communicator.ShopListener;
 import com.stuffrs.newappopay.stuffers_business.fragments.bottom_fragment.BottomTransactionPin;
@@ -56,11 +55,9 @@ import com.stuffrs.newappopay.stuffers_business.AppoPayApplication;
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.AddMoneyToWallet;
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.BecomeMerchantActivity;
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.HotelSearchActivity;
-import com.stuffrs.newappopay.stuffers_business.activity.wallet.MovieTicketsActivity;
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.RequestMoney;
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.SignInActivity;
-import com.stuffrs.newappopay.stuffers_business.activity.wallet.TravelActivity;
-import com.stuffrs.newappopay.stuffers_business.adapter.mall.TopShoppingOfferAdapter;
+
 import com.stuffrs.newappopay.stuffers_business.api.ApiUtils;
 import com.stuffrs.newappopay.stuffers_business.api.MainAPIInterface;
 import com.stuffrs.newappopay.stuffers_business.communicator.SideWalletListener;
@@ -109,7 +106,7 @@ public class HomeFragment extends Fragment implements ShopListener {
 
     ExpandableHeightGridView topShoppingOffersGridView;
 
-    TopShoppingOfferAdapter topShoppingOfferAdapter;
+
     ProgressBar topOfferProgressBar;
 
     MainAPIInterface mainAPIInterface;
@@ -491,50 +488,6 @@ public class HomeFragment extends Fragment implements ShopListener {
             }
         });
 
-        llTrainTicket.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(getActivity(), TravelActivity.class);
-                intent.putExtra("travel", "train");
-                startActivity(intent);
-
-            }
-        });
-
-        llFlightTicket.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(getActivity(), TravelActivity.class);
-                intent.putExtra("travel", "flight");
-                startActivity(intent);
-
-            }
-        });
-
-
-        llBus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(getActivity(), TravelActivity.class);
-                intent.putExtra("travel", "bus");
-                startActivity(intent);
-
-            }
-        });
-
-
-        llMovieTicket.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(getActivity(), MovieTicketsActivity.class);
-                startActivity(intent);
-
-            }
-        });
 
         llHotels.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -609,8 +562,7 @@ public class HomeFragment extends Fragment implements ShopListener {
 
             }
         });
-        ShopAdapter adapter = new ShopAdapter(getActivity(), mList, this);
-        rvShop.setAdapter(adapter);
+
 
         llTransferMoney.setOnClickListener(new View.OnClickListener() {
             @Override

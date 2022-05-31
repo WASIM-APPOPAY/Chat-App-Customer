@@ -672,6 +672,7 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
                             }
                         });
             } catch (Exception e) {
+                Log.e("TAG", "notifyMessage: exception called" );
                 e.printStackTrace();
             }
         }

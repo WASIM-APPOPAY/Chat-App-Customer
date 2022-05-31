@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.stuffrs.newappopay.R;
-import com.stuffrs.newappopay.stuffers_business.activity.wallet.MovieTicketsActivity;
 import com.stuffrs.newappopay.stuffers_business.communicator.StartActivityListener;
 
 /**
@@ -71,14 +70,7 @@ public class EntertainmentFragment extends Fragment {
         // Inflate the layout for this fragment
         View mView = inflater.inflate(R.layout.fragment_entertainment, container, false);
         llMovieTicket = (LinearLayout) mView.findViewById(R.id.llMovieTicket);
-        llMovieTicket.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), MovieTicketsActivity.class);
-                startActivity(intent);
 
-            }
-        });
         return mView;
     }
 

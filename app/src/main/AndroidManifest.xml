@@ -217,12 +217,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan|adjustResize"
             tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.PinActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".stuffers_business.activity.shop_mall.SopActivity"
-            android:screenOrientation="portrait" />
+
         <activity
             android:name=".stuffers_business.my_camera.CameraActivity"
             android:screenOrientation="portrait" />
@@ -286,7 +281,6 @@
             android:name=".stuffers_business.activity.contact.ContactDemoActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:name=".stuffers_business.activity.wallet.SignInChat" />
         <activity
             android:name=".stuffers_business.activity.wallet.RequestMoney"
             android:screenOrientation="portrait"
@@ -396,15 +390,6 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".stuffers_business.activity.wallet.BookBusTicketActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.BusSearchResultActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.FlightSearchResultActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
             android:name=".stuffers_business.activity.wallet.HomeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize"
@@ -424,96 +409,10 @@
             android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".stuffers_business.activity.wallet.MovieDetailView"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.MovieTicketsActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.MovieTicketSeatViewActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.MyOrdersActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.PaymentsActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
             android:name=".stuffers_business.activity.wallet.ProfileActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.RegisterCustomerDetailsActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.TrainSearchResultActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.TravelActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.AllBrandsActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.AllChildCategoriesActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.BookAppointmentActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.CartActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.CategoryDetailActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.CategoryListActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.HelplineActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.NewServiceListActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.NotificationActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.OrderTrackActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.ProductDetailActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.ProductReviewActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.ProductsActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.SearchActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.SellerDetailActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.SellersofServiceList"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.ServiceCategoriesActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.ThankYouActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.ThankYouAppointmentActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.ViewTopProductActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.mall.YourOrderActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
+
         <activity
             android:name=".stuffers_business.activity.wallet.PayNowActivity"
             android:screenOrientation="portrait"
@@ -525,24 +424,6 @@
         <activity
             android:name=".stuffers_business.activity.wallet.InnerPayActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.MyPassbook"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.PaymentSettings"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.ThankYouRechargeDone"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.TrainTicketDetailActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.AddTrainTicketInfo"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.MovieTicketDetailActivity"
             android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <service

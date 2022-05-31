@@ -7,10 +7,6 @@
         android:icon="@drawable/ic_home"
         android:title="@string/info_home" />
 
-    <item
-        android:id="@+id/action_shopping"
-        android:icon="@drawable/ic_shopping"
-        android:title="@string/info_mall" />
 
     <item
         android:id="@+id/action_scan"

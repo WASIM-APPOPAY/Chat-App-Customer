@@ -14,14 +14,9 @@ import android.widget.LinearLayout;
 
 import com.stuffrs.newappopay.R;
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.HotelSearchActivity;
-import com.stuffrs.newappopay.stuffers_business.activity.wallet.TravelActivity;
 import com.stuffrs.newappopay.stuffers_business.communicator.StartActivityListener;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TravelFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class TravelFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -59,37 +54,6 @@ public class TravelFragment extends Fragment {
             }
         });
 
-        llFlightTicket.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(getActivity(), TravelActivity.class);
-                intent.putExtra("travel", "flight");
-                startActivity(intent);
-
-            }
-        });
-
-        llBus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), TravelActivity.class);
-                intent.putExtra("travel", "bus");
-                startActivity(intent);
-
-            }
-        });
-
-        llTrainTicket.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(getActivity(), TravelActivity.class);
-                intent.putExtra("travel", "train");
-                startActivity(intent);
-
-            }
-        });
 
 
         return mView;

@@ -35,7 +35,6 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.iid.internal.FirebaseInstanceIdInternal;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.stuffrs.newappopay.stuffers_business.AppoPayApplication;
 import com.stuffrs.newappopay.stuffers_business.MyContextWrapper;
@@ -72,7 +71,6 @@ import com.stuffrs.newappopay.stuffers_business.communicator.UpdateProfileReques
 import com.stuffrs.newappopay.stuffers_business.communicator.UserAccountTransferListener;
 import com.stuffrs.newappopay.stuffers_business.fragments.bottom.BankFragment;
 import com.stuffrs.newappopay.stuffers_business.fragments.bottom.HomeFragment;
-import com.stuffrs.newappopay.stuffers_business.fragments.bottom.MallFragment;
 import com.stuffrs.newappopay.stuffers_business.fragments.bottom.ScanAppopayFragment;
 import com.stuffrs.newappopay.stuffers_business.fragments.bottom.ScanFragment;
 import com.stuffrs.newappopay.stuffers_business.fragments.bottom_fragment.BottomAccountCreated;
@@ -255,26 +253,6 @@ public class HomeActivity extends AppCompatActivity implements OnNavigationItemC
             }
         });
 
-        layoutMall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawer_layout.closeDrawer(GravityCompat.START);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        bottomify_nav.setActiveNavigationIndex(1);
-                        Fragment fragment2 = new MallFragment();
-                        FragmentManager fragmentManager2 = getSupportFragmentManager();
-                        FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
-                        fragmentTransaction2.addToBackStack(null);
-                        fragmentTransaction2.replace(R.id.mainContainer, fragment2);
-                        fragmentTransaction2.commit();
-
-                    }
-                }, 250);
-
-            }
-        });
 
         layoutSetting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -556,18 +534,9 @@ public class HomeActivity extends AppCompatActivity implements OnNavigationItemC
                 fragmentTransaction.commit();
                 break;
 
+
+
             case 1:
-                hideItem();
-                Fragment fragment2 = new MallFragment();
-
-                FragmentManager fragmentManager2 = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
-                fragmentTransaction2.addToBackStack(null);
-                fragmentTransaction2.replace(R.id.mainContainer, fragment2);
-                fragmentTransaction2.commit();
-                break;
-
-            case 2:
                 hideItem();
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
@@ -592,7 +561,7 @@ public class HomeActivity extends AppCompatActivity implements OnNavigationItemC
                 }
                 break;
 
-            case 3:
+            case 2:
                 hideItem();
                 BankFragment fragment4 = new BankFragment();
                 FragmentManager fragmentManager4 = getSupportFragmentManager();

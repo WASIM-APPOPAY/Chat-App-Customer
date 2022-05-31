@@ -36,9 +36,7 @@ public class ApiUtils {
         return RetrofitClient.getClientNode(BASE_URL_NODE).create(MainAPIInterface.class);
     }
 
-    public static MainShopAPIInterface getAPIServiceShop() {
-        return RetrofitClient.getClientShopItems(BASE_URL_CERCA24).create(MainShopAPIInterface.class);
-    }
+
 
     public static MainAPIInterface getUnionPayService() {
         return RetrofitClient.getClientUnionPay(BASE_UNION).create(MainAPIInterface.class);

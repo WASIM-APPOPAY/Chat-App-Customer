@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
@@ -28,10 +29,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 import com.stuffrs.newappopay.BuildConfig;
 import com.stuffrs.newappopay.R;
 import com.stuffrs.newappopay.Utils.Helper;
 import com.stuffrs.newappopay.bottom_fragments.BottomLanguage;
+import com.stuffrs.newappopay.model.User;
 import com.stuffrs.newappopay.stuffers_business.AppoPayApplication;
 import com.stuffrs.newappopay.stuffers_business.MyContextWrapper;
 import com.stuffrs.newappopay.stuffers_business.communicator.LanguageListener;
@@ -46,6 +49,7 @@ import org.w3c.dom.Text;
 
 public class SplashActivity extends AppCompatActivity implements LanguageListener {
     MyTextView tvAgree;
+    private static final String TAG = "SplashActivity";
     private MyTextViewBold tvTapInfo, tvLanguage;
     private BottomLanguage mBottomLanguage;
     private CheckBox tvCheck;
@@ -109,6 +113,9 @@ public class SplashActivity extends AppCompatActivity implements LanguageListene
                         return;
                     }
                     DataVaultManager.getInstance(SplashActivity.this).saveTerm("check");
+                    User loggedInUser = helper.getLoggedInUser();
+                    String s = new Gson().toJson(loggedInUser);
+                    Log.e(TAG, "onClick: "+s );
                     startActivity(new Intent(SplashActivity.this, helper.getLoggedInUser() != null ? HomeActivity.class : NumberActivity.class));
                 } else {
                     showPermission(getString(R.string.permission_desc_storage));

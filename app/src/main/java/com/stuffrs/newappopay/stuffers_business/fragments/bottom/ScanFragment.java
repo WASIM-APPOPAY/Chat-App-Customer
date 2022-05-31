@@ -1,5 +1,8 @@
 package com.stuffrs.newappopay.stuffers_business.fragments.bottom;
 
+import static com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager.KEY_ACCESSTOKEN;
+import static com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager.KEY_USER_DETIALS;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,31 +22,27 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
-import com.stuffrs.newappopay.stuffers_business.api.ApiUtils;
-import com.stuffrs.newappopay.stuffers_business.api.Constants;
-import com.stuffrs.newappopay.stuffers_business.api.MainAPIInterface;
-import com.stuffrs.newappopay.stuffers_business.api.MainShopAPIInterface;
-import com.stuffrs.newappopay.stuffers_business.utils.Helper;
 import com.emv.qrcode.decoder.mpm.DecoderMpm;
 import com.emv.qrcode.model.mpm.MerchantPresentedMode;
 import com.google.gson.Gson;
 import com.google.zxing.Result;
 import com.stuffrs.newappopay.R;
 import com.stuffrs.newappopay.stuffers_business.AppoPayApplication;
+import com.stuffrs.newappopay.stuffers_business.api.ApiUtils;
+import com.stuffrs.newappopay.stuffers_business.api.Constants;
+import com.stuffrs.newappopay.stuffers_business.api.MainAPIInterface;
 import com.stuffrs.newappopay.stuffers_business.communicator.ScanRequestListener;
 import com.stuffrs.newappopay.stuffers_business.fragments.dialog.ErrorDialogFragment;
 import com.stuffrs.newappopay.stuffers_business.fragments.dialog.ProfileErrorDialogFragment;
 import com.stuffrs.newappopay.stuffers_business.utils.AppoConstants;
 import com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager;
+import com.stuffrs.newappopay.stuffers_business.utils.Helper;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import okhttp3.OkHttpClient;
-
-import static com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager.KEY_ACCESSTOKEN;
-import static com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager.KEY_USER_DETIALS;
 
 public class ScanFragment extends Fragment {
     private static final String TAG = "ScanFragment";
