@@ -547,9 +547,10 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
         rvBottomChat.setLayoutManager(new GridLayoutManager(this, 4));
         Intent intent = getIntent();
         if (intent.hasExtra(MOBILE_NUMBER)){
-            mMobileNumber = intent.getStringExtra(MOBILE_NUMBER);
+             mMobileNumber = intent.getStringExtra(MOBILE_NUMBER);
              passPhoneNumber(mMobileNumber);
         }
+
         if (intent.hasExtra(EXTRA_DATA_CHAT)) {
             chat = intent.getParcelableExtra(EXTRA_DATA_CHAT);
             Helper.CURRENT_CHAT_ID = chat.getUserId();
@@ -571,7 +572,6 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
             finish();//temporary fix
         }
         moreItems = Helper.getMoreItems();
-
         initUi();
         ivMenuBottom = findViewById(R.id.ivMenuBottom);
         ivMenuBottom.setOnClickListener(new View.OnClickListener() {
