@@ -79,7 +79,8 @@ public class AppoPayFragment extends Fragment {
     private List<CurrencyResult> resultCurrency;
     private ArrayList<AccountModel> mListAccount;
     private JSONObject indexMerchant, jsonCommission, objResult;
-    private MyTextView tvHeader, tvCodeMobile, tvEmialId, tvIndex5, tvAccountNos;
+    private MyTextView  tvCodeMobile, tvEmialId, tvIndex5, tvAccountNos;
+    private MyTextViewBold tvHeader;
     private MyTextView tvFromAccount, tvConversionRates, tvAmountCredit;
     private CardView tvCardMerchant;
     private String[] splitScan;
@@ -113,7 +114,7 @@ public class AppoPayFragment extends Fragment {
 
         mainAPIInterface = ApiUtils.getAPIService();
         tvCardMerchant = (CardView) mView.findViewById(R.id.tvCardMerchant);
-        tvHeader = (MyTextView) mView.findViewById(R.id.tvHeader);
+        tvHeader = (MyTextViewBold) mView.findViewById(R.id.tvHeader);
         tvCodeMobile = (MyTextView) mView.findViewById(R.id.tvCodeMobile);
         tvEmialId = (MyTextView) mView.findViewById(R.id.tvEmialId);
         tvIndex5 = (MyTextView) mView.findViewById(R.id.tvIndex5);

@@ -889,12 +889,13 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
                 fos.write(bitmapdata);
                 fos.flush();
                 fos.close();
-                /*new Handler().postDelayed(new Runnable() {
+                new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        //uploadImage(mFileSSort.getPath());
                         uploadImage(mFileSSort.getPath());
                     }
-                },1000);*/
+                },1000);
                 openScreenshot(mFileSSort);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -968,7 +969,7 @@ public class TransferChatActivity extends AppCompatActivity implements Transacti
         super.onActivityResult(requestCode, resultCode, data);
         Log.e(TAG, "onActivityResult: called 197 ");
         Log.e(TAG, "onActivityResult: "+mFileSSort.getPath() );
-        uploadImage(mFileSSort.getPath());
+       // uploadImage(mFileSSort.getPath());
         redirectHome();
         /*if (resultCode == 198) {
             Log.e(TAG, "onActivityResult: called 198 ");
