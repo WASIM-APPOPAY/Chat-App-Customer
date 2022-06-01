@@ -114,12 +114,12 @@ public class SplashActivity extends AppCompatActivity implements LanguageListene
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    DataVaultManager.getInstance(SplashActivity.this).saveTerm("check");
+                    /*DataVaultManager.getInstance(SplashActivity.this).saveTerm("check");
 
                     DataVaultManager.getInstance(SplashActivity.this).saveComingFromSplash("no");
                     Intent i = new Intent(SplashActivity.this, HomeActivity.class);
                     startActivity(i);
-                    finish();
+                    finish();*/
                 }
             }, SPLASH_TIMEOUT);
         } else {

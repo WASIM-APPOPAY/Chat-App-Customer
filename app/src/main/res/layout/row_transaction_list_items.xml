@@ -110,7 +110,6 @@
             android:orientation="horizontal">
 
             <com.stuffrs.newappopay.stuffers_business.views.MyTextView
-                android:id="@+id/tvTransactionStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"

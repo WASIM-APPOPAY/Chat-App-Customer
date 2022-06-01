@@ -31,7 +31,6 @@
 
 
             <ScrollView
-                android:id="@+id/MainForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/head"
@@ -41,7 +40,6 @@
                 android:paddingRight="20dp">
 
                 <LinearLayout
-                    android:id="@+id/linear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edit_text_rounded"
@@ -183,7 +181,6 @@
 
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -355,7 +352,6 @@
                     </LinearLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/email1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -387,7 +383,6 @@
                         android:orientation="horizontal">
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/password"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -609,7 +604,6 @@
                         android:visibility="gone" />
 
                     <LinearLayout
-                        android:id="@+id/linear4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
@@ -633,7 +627,6 @@
 
 
                             <com.stuffrs.newappopay.stuffers_business.views.MyTextView
-                                android:id="@+id/forgotpass"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"

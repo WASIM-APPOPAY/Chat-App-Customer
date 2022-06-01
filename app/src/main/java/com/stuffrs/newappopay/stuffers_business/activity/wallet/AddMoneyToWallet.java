@@ -133,8 +133,8 @@ public class AddMoneyToWallet extends AppCompatActivity/* implements CardScanAct
         llAgentLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentAgent = new Intent(AddMoneyToWallet.this, AgentMapActivity.class);
-                startActivity(intentAgent);
+                /*Intent intentAgent = new Intent(AddMoneyToWallet.this, AgentMapActivity.class);
+                startActivity(intentAgent);*/
             }
         });
         btnShow.setOnClickListener(new View.OnClickListener() {

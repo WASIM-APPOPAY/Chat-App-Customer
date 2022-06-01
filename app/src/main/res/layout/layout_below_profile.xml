@@ -15,7 +15,6 @@
         android:textColor="@color/white" />
 
     <com.stuffrs.newappopay.stuffers_business.views.MyTextView
-        android:id="@+id/tvSideBalance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -35,7 +34,6 @@
 
         <!--layout send-->
         <LinearLayout
-            android:id="@+id/lSend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -129,7 +127,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layoutMyCards"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

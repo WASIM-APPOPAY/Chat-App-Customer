@@ -1,5 +1,9 @@
 package com.stuffrs.newappopay.stuffers_business.activity.wallet;
 
+import static com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager.KEY_ACCESSTOKEN;
+import static com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager.KEY_UNIQUE_NUMBER;
+import static com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager.KEY_USER_LANGUAGE;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -13,22 +17,22 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatSpinner;
 
-import com.stuffrs.newappopay.activity.ChatActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.gson.JsonObject;
+import com.hbb20.CountryCodePicker;
+import com.stuffrs.newappopay.R;
 import com.stuffrs.newappopay.model.Chat;
 import com.stuffrs.newappopay.stuffers_business.AppoPayApplication;
 import com.stuffrs.newappopay.stuffers_business.MyContextWrapper;
-import com.stuffrs.newappopay.R;
 import com.stuffrs.newappopay.stuffers_business.activity.forgopassword.ForgotPasswordActvivity;
 import com.stuffrs.newappopay.stuffers_business.api.ApiUtils;
 import com.stuffrs.newappopay.stuffers_business.api.MainAPIInterface;
 import com.stuffrs.newappopay.stuffers_business.communicator.AreaSelectListener;
 import com.stuffrs.newappopay.stuffers_business.fragments.bottom.chat.TransferChatActivity;
-import com.stuffrs.newappopay.stuffers_business.fragments.bottom.chatnotification.Token;
 import com.stuffrs.newappopay.stuffers_business.fragments.bottom_fragment.BottomPasswordPolicy;
 import com.stuffrs.newappopay.stuffers_business.fragments.dialog.AreaCodeDialog;
 import com.stuffrs.newappopay.stuffers_business.models.output.AuthorizationResponse;
@@ -37,15 +41,6 @@ import com.stuffrs.newappopay.stuffers_business.utils.AppoConstants;
 import com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager;
 import com.stuffrs.newappopay.stuffers_business.views.MyEditText;
 import com.stuffrs.newappopay.stuffers_business.views.MyTextView;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.gson.JsonObject;
-import com.hbb20.CountryCodePicker;
 import com.stuffrs.newappopay.stuffers_business.views.MyTextViewBold;
 
 import org.apache.commons.lang3.StringUtils;
@@ -53,18 +48,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager.KEY_ACCESSTOKEN;
-import static com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager.KEY_FIREBASE_TOKEN;
-import static com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager.KEY_UNIQUE_NUMBER;
-import static com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager.KEY_USER_LANGUAGE;
-import static com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager.TANDC;
 
 public class SignInActivity extends AppCompatActivity implements AreaSelectListener {
 

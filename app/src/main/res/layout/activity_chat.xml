@@ -46,7 +46,6 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/notification_call"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_gravity="center_vertical"

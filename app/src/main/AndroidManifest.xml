@@ -116,17 +116,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--
-<service
-            android:name=""
-            android:exported="false"
-            android:enabled="false"
-            android:permission="android.permission.BIND_JOB_SERVICE">
-            <intent-filter>
-                <action android:name="com.onesignal.NotificationExtender" />
-            </intent-filter>
-        </service>
-        -->
+
         <meta-data
             android:name=".services.MyOnesignalNotificationService"
             android:value="com.onesignal.appopay.NotificationServiceExtension" /> <!-- OLD APPOPAY -->
@@ -134,30 +124,12 @@
             android:name=".stuffers_business.fragments.bottom.chat.TransferChatActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".stuffers_business.activity.FianceTab.WalletNewBankActivity"
-            android:exported="true">
 
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
-        </activity>
-        <activity
-            android:name=".stuffers_business.activity.FianceTab.DominaActivity"
-            android:exported="false" />
 
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity
-            android:name=".stuffers_business.activity.wallet.GiftCardActivity"
-            android:exported="false" />
-        <activity android:name=".stuffers_business.activity.wallet.AgentMapActivity" />
 
         <service
             android:name=".stuffers_business.myService.MyApduService"
@@ -174,10 +146,7 @@
                 android:resource="@xml/apduservice" />
         </service>
 
-        <activity
-            android:name=".stuffers_business.activity.quick_pass.QRCodeActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan" />
+
         <!--
  The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -194,85 +163,13 @@
             android:name="org.apache.http.Legacy"
             android:required="false" />
 
-        <activity
-            android:name=".stuffers_business.activity.wallet.MerchantMapsActivity"
-            android:hardwareAccelerated="false"
-            android:label="@string/title_activity_merchant_maps" />
-        <activity android:name=".stuffers_business.activity.FianceTab.UnionPayActivity" />
-        <activity android:name=".stuffers_business.activity.FianceTab.ClientsActivity" />
-        <activity android:name=".stuffers_business.activity.FianceTab.TarjetaActivity" />
-        <activity android:name=".stuffers_business.activity.FianceTab.FinanceActivity" />
-        <activity
-            android:name=".stuffers_business.activity.lunex_card.LunexGiftActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".stuffers_business.activity.wallet.FundSistemaActivity" />
-        <activity
-            android:name=".stuffers_business.activity.profile.DeliveryAddressActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize"
-            tools:ignore="LockedOrientationActivity" />
-        <activity android:name=".stuffers_business.activity.lunex_card.LunexMoreActivity" />
-        <activity
-            android:name=".stuffers_business.activity.lunex_card.LunexItemsActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan|adjustResize"
-            tools:ignore="LockedOrientationActivity" />
 
         <activity
             android:name=".stuffers_business.my_camera.CameraActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".stuffers_business.fragments.finance_fragment.media.MediaActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".stuffers_business.activity.quick_pass.QuickPassActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".stuffers_business.activity.linkbank.LinkBankAccountActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".stuffers_business.fragments.finance_fragment.TermConditionActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".stuffers_business.activity.finance.InsuranceTypeActivity" />
-        <activity android:name=".stuffers_business.activity.finance.InsuranceActivity" />
-        <activity
-            android:name=".stuffers_business.activity.finance.GoBankActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.payment.GasQrActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan" />
-        <activity
-            android:name=".stuffers_business.activity.payment.GasPaymentActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan" />
-        <activity
-            android:name=".stuffers_business.activity.giftcard.OwnGiftCardActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.CashOut2Activity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.CashOutActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan" />
+
         <activity
             android:name=".stuffers_business.activity.forgopassword.ForgotPasswordActvivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".stuffers_business.activity.lifestyle.WaterActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".stuffers_business.activity.lifestyle.TvActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".stuffers_business.activity.lifestyle.PhoneActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".stuffers_business.activity.lifestyle.ElectricityActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".stuffers_business.activity.wallet.ForgotPasswordActivity"
@@ -281,30 +178,7 @@
             android:name=".stuffers_business.activity.contact.ContactDemoActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.RequestMoney"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.notificationActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.BecomeMerchantActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.BankNameActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.TransactionDetailsActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.TransactionListActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
+
         <activity
             android:name=".stuffers_business.activity.wallet.WalletCardActivity"
             android:screenOrientation="portrait"
@@ -313,49 +187,9 @@
             android:name=".stuffers_business.activity.wallet.WalletBankActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".stuffers_business.activity.cardtopup.TopupCardActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
+
         <activity android:name=".stuffers_business.activity.wallet.WalletActivity" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.QuickPaymentActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity android:name=".stuffers_business.activity.wallet.RemoveCardActivity" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.CardDetails"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity android:name=".stuffers_business.activity.wallet.MyCardsActivity" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.AccountActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.TransactionPinActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.ScreenLockActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.ProfileDetailsActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.UpdateProfileActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.OverviewActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.SettingActvity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize"
-            tools:ignore="LockedOrientationActivity" />
+
         <activity
             android:name=".stuffers_business.activity.wallet.VerifyOtpActivity"
             android:windowSoftInputMode="stateHidden|adjustResize|adjustPan" />
@@ -389,17 +223,7 @@
             android:name=".stuffers_business.activity.wallet.AddMoneyToWallet"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.HomeActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.HotelSearchActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.HotelSearchResultActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
+
         <activity
             android:name=".stuffers_business.activity.wallet.MobileNumberRegistrationActivity"
             android:windowSoftInputMode="stateHidden|adjustResize|adjustPan" />
@@ -408,10 +232,6 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"
             tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".stuffers_business.activity.wallet.ProfileActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <activity
             android:name=".stuffers_business.activity.wallet.PayNowActivity"
@@ -426,15 +246,6 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize" />
 
-        <service
-            android:name=".stuffers_business.fragments.bottom.chatnotification.AppopayFirebaseMessaging"
-            android:enabled="true"
-            android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
 
         <receiver
             android:name=".stuffers_business.myService.NotificationReceiver"
@@ -448,7 +259,7 @@
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id" />
 
-        <provider
+       <!-- <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.stuffer.newstuffers.fileprovider"
             android:exported="false"
@@ -456,7 +267,7 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/paths" />
-        </provider>
+        </provider>-->
 
         <service
             android:name=".stuffers_business.asyntask.MyJobIntentService"

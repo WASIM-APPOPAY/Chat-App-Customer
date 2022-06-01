@@ -55,7 +55,6 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tinput_field_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -80,7 +79,6 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tinput_fName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -103,7 +101,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tinput_mName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -112,7 +109,6 @@
                 android:padding="5dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/mTiedMname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Middle Name"
@@ -128,7 +124,6 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tinput_lName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"

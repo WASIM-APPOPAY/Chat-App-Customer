@@ -23,7 +23,6 @@ import android.media.MediaRecorder;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
@@ -75,7 +74,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
-import com.iceteck.silicompressorr.SiliCompressor;
 import com.kbeanie.multipicker.api.AudioPicker;
 import com.kbeanie.multipicker.api.CameraImagePicker;
 import com.kbeanie.multipicker.api.FilePicker;
@@ -107,7 +105,6 @@ import com.stuffrs.newappopay.adapter.ContactsAdapter;
 import com.stuffrs.newappopay.adapter.MessageAdapter;
 import com.stuffrs.newappopay.adapter.MoreAdapter;
 import com.stuffrs.newappopay.bottom_dialog.BottomNotAccount;
-import com.stuffrs.newappopay.chat.DemoChatActivity;
 import com.stuffrs.newappopay.interfaces.MoreListener;
 import com.stuffrs.newappopay.interfaces.OnMessageItemClick;
 import com.stuffrs.newappopay.interfaces.ProceedRequest;
@@ -122,18 +119,15 @@ import com.stuffrs.newappopay.model.User;
 import com.stuffrs.newappopay.services.UploadAndSendService;
 import com.stuffrs.newappopay.stuffers_business.AppoPayApplication;
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.AddMoneyToWallet;
-import com.stuffrs.newappopay.stuffers_business.activity.wallet.HomeActivity;
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.MobileRechargeActivity;
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.P2PTransferActivity;
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.ScanPayActivity;
 import com.stuffrs.newappopay.stuffers_business.activity.wallet.SignInActivity;
-import com.stuffrs.newappopay.stuffers_business.activity.wallet.WalletBankActivity;
 import com.stuffrs.newappopay.stuffers_business.fragments.bottom.chat.TransferChatActivity;
 import com.stuffrs.newappopay.stuffers_business.utils.AppoConstants;
 import com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager;
 import com.stuffrs.newappopay.viewHolders.BaseMessageViewHolder;
 import com.stuffrs.newappopay.viewHolders.MessageAttachmentRecordingViewHolder;
-import com.stuffrs.newappopay.views.MyTextView;
 import com.vanniktech.emoji.EmojiEditText;
 import com.vanniktech.emoji.EmojiPopup;
 
@@ -258,12 +252,17 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
             String playerId = dataSnapshot.getValue(String.class);
-            if (playerId != null) userPlayerIds.add(playerId);
+            if (playerId != null) {
+                Log.e("chat", "onDataChange: called" );
+                userPlayerIds.add(playerId);
+            }else {
+                Log.e("chat", "onDataChange: null" );
+            }
         }
 
         @Override
         public void onCancelled(@NonNull DatabaseError databaseError) {
-
+            Log.e("chat", "onCancelled: called" +databaseError.getMessage());
         }
     };
 
@@ -640,7 +639,9 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
     }
 
     private void registerChatUpdates() {
-        chatRef.child(chat.getChatChild()).limitToLast(FIREBASE_MESSAGE_QUERY_LIMIT).addChildEventListener(messagesChildEventListener);
+        //chatRef.child(chat.getChatChild()).limitToLast(FIREBASE_MESSAGE_QUERY_LIMIT).addChildEventListener(messagesChildEventListener);
+        chatRef.child(chat.getChatChild()).addChildEventListener(messagesChildEventListener);
+
     }
 
     private void markDelivered(Message msg) {
@@ -657,6 +658,7 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
                 userPlayerIds.remove(myPlayerId);
             }
             try {
+                Log.e("TAG", "notifyMessage: called" );
                 //String headings = userMe.getId() + " " + getString(R.string.new_message_sent);
                 String headings = (chat.isGroup() && group != null) ? group.getName() : userMe.getId();
                 OneSignal.postNotification(new JSONObject("{'headings': {'en':'" + headings + "'}, 'contents': {'en':'" + message.getBody() + "'}, 'include_player_ids': " + userPlayerIds.toString() + ",'data': " + new Gson().toJson(message) + ",'android_group':" + message.getChatId() + " }"),
@@ -675,6 +677,8 @@ public class ChatActivity extends BaseActivity implements OnMessageItemClick, Me
                 Log.e("TAG", "notifyMessage: exception called" );
                 e.printStackTrace();
             }
+        }else {
+            Log.e("TAG", "notifyMessage: empty " );
         }
     }
 

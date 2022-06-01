@@ -12,7 +12,6 @@ import android.widget.RelativeLayout;
 
 import androidx.viewpager.widget.PagerAdapter;
 
-import com.stuffrs.newappopay.stuffers_business.activity.wallet.HomeActivity;
 import com.daimajia.slider.library.Animations.BaseAnimationInterface;
 import com.daimajia.slider.library.Indicators.PagerIndicator;
 import com.daimajia.slider.library.SliderAdapter;
@@ -45,48 +44,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-/**
- * SliderLayout is compound layout. This is combined with {@link PagerIndicator}
- * and {@link ViewPagerEx} .
- * <p>
- * There is some properties you can set in XML:
- * <p>
- * indicator_visibility
- * visible
- * invisible
- * <p>
- * indicator_shape
- * oval
- * rect
- * <p>
- * indicator_selected_color
- * <p>
- * indicator_unselected_color
- * <p>
- * indicator_selected_drawable
- * <p>
- * indicator_unselected_drawable
- * <p>
- * pager_animation
- * Default
- * Accordion
- * Background2Foreground
- * CubeIn
- * DepthPage
- * Fade
- * FlipHorizontal
- * FlipPage
- * Foreground2Background
- * RotateDown
- * RotateUp
- * Stack
- * Tablet
- * ZoomIn
- * ZoomOutSlide
- * ZoomOut
- * <p>
- * pager_animation_span
- */
+
 public class SliderLayout extends RelativeLayout {
 
     private Context mContext;
@@ -395,9 +353,7 @@ public class SliderLayout extends RelativeLayout {
     }
 
 
-    public void addOnPageChangeListener(HomeActivity mainActivity) {
 
-    }
 
     /**
      * preset transformers and their names

@@ -141,9 +141,9 @@ public class WalletBankActivity extends AppCompatActivity implements CountrySele
                 if (mListBank == null) {
                     showToast(getString(R.string.info_select_county));
                 } else {
-                    Intent intentBank = new Intent(WalletBankActivity.this, BankNameActivity.class);
+                    /*Intent intentBank = new Intent(WalletBankActivity.this, BankNameActivity.class);
                     intentBank.putParcelableArrayListExtra(AppoConstants.INFO, (ArrayList<? extends Parcelable>) mListBank);
-                    startActivityForResult(intentBank, AppoConstants.BANK_NAME_REQUEST);
+                    startActivityForResult(intentBank, AppoConstants.BANK_NAME_REQUEST);*/
                 }
             }
         });

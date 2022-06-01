@@ -34,7 +34,6 @@
         android:layout_centerVertical="true">
 
         <ImageView
-            android:id="@+id/removeUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="4dp"
@@ -42,7 +41,6 @@
             android:visibility="gone" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/userSelected"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="false"

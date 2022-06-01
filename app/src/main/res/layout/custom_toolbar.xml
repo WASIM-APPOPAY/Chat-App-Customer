@@ -40,7 +40,6 @@
 
 
         <ImageView
-            android:id="@+id/logo_icon"
             android:layout_width="160dp"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
@@ -60,7 +59,6 @@
 
             <ImageView
 
-                android:id="@+id/notification_video"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_gravity="center_vertical"
@@ -72,7 +70,6 @@
 
             <ImageView
 
-                android:id="@+id/notification_call"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_gravity="center_vertical"
@@ -82,7 +79,6 @@
                 android:visibility="gone" />
 
             <FrameLayout
-                android:id="@+id/frameNotification"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -91,7 +87,6 @@
                 android:focusable="true">
 
                 <ImageView
-                    android:id="@+id/notification_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -101,7 +96,6 @@
 
 
                 <com.stuffrs.newappopay.stuffers_business.views.MyTextView
-                    android:id="@+id/tvTotalNoti"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"

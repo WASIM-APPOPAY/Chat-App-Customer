@@ -49,6 +49,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.stuffrs.newappopay.R;
+import com.stuffrs.newappopay.Utils.FileUtils;
 import com.stuffrs.newappopay.stuffers_business.AppoPayApplication;
 import com.stuffrs.newappopay.stuffers_business.adapter.address.AutoCompleteAdapter;
 import com.stuffrs.newappopay.stuffers_business.api.ApiUtils;
@@ -62,7 +63,7 @@ import com.stuffrs.newappopay.stuffers_business.fragments.bottom_fragment.Bottom
 import com.stuffrs.newappopay.stuffers_business.fragments.dialog.BankDialog;
 import com.stuffrs.newappopay.stuffers_business.fragments.dialog.InsuranceDialog;
 import com.stuffrs.newappopay.stuffers_business.fragments.dialog.StateDialogFragment;
-import com.stuffrs.newappopay.stuffers_business.fragments.finance_fragment.FileUtils;
+
 import com.stuffrs.newappopay.stuffers_business.models.Country.CountryCodeResponse;
 import com.stuffrs.newappopay.stuffers_business.models.Country.Result;
 import com.stuffrs.newappopay.stuffers_business.models.Country.State;

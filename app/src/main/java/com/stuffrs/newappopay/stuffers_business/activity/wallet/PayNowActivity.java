@@ -29,7 +29,6 @@ import com.bumptech.glide.Glide;
 import com.google.gson.JsonParser;
 import com.stuffrs.newappopay.stuffers_business.AppoPayApplication;
 import com.stuffrs.newappopay.R;
-import com.stuffrs.newappopay.stuffers_business.activity.FianceTab.UnionPayActivity;
 import com.stuffrs.newappopay.stuffers_business.api.ApiUtils;
 import com.stuffrs.newappopay.stuffers_business.api.Constants;
 import com.stuffrs.newappopay.stuffers_business.api.MainAPIInterface;
@@ -45,7 +44,6 @@ import com.stuffrs.newappopay.stuffers_business.utils.AppoConstants;
 import com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager;
 import com.stuffrs.newappopay.stuffers_business.utils.Helper;
 import com.stuffrs.newappopay.stuffers_business.utils.IsoDepTransceiver;
-import com.stuffrs.newappopay.stuffers_business.utils.QRCodeUtil;
 import com.stuffrs.newappopay.stuffers_business.utils.TimeUtils;
 import com.stuffrs.newappopay.stuffers_business.utils.UnionConstant;
 import com.stuffrs.newappopay.stuffers_business.views.MyButton;
@@ -735,7 +733,7 @@ public class PayNowActivity extends AppCompatActivity implements NfcAdapter.Read
     public void redirectCardEnrollment() {
         if (mBottomNotCard != null)
             mBottomNotCard.dismiss();
-        Intent intentUnion = new Intent(PayNowActivity.this, UnionPayActivity.class);
-        startActivity(intentUnion);
+        /*Intent intentUnion = new Intent(PayNowActivity.this, UnionPayActivity.class);
+        startActivity(intentUnion);*/
     }
 }

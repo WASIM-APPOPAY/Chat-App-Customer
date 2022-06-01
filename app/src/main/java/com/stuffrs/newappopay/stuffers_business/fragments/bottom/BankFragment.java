@@ -391,10 +391,10 @@ public class BankFragment extends Fragment {
         ////https://api.exchangeratesapi.io/latest?base=USD
         //String url = "https://api.exchangeratesapi.io/latest?base=" + mListAccount.get(pos).getCurrencyCode();
         //Log.e(TAG, "getConversionBaseRate: url :: " + url);
-        sentParam(null);
+        sentParam();
     }
 
-    private void sentParam(JSONObject response) {
+    private void sentParam() {
         JSONObject objReceiver = new JSONObject();
         try {
             objReceiver.put(AppoConstants.RECIEVERACCOUNTNUMBER, mListAccount.get(fromPosition).getAccountnumber());

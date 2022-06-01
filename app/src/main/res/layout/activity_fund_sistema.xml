@@ -47,7 +47,6 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/card_number_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -87,7 +86,6 @@
                     android:background="@drawable/bg_border_calve">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tieDate"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:background="@null"
@@ -108,7 +106,6 @@
                     android:background="@drawable/bg_border_calve">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/tieCod"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:background="@null"
@@ -132,7 +129,6 @@
                 android:background="@drawable/bg_border_calve">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tieName"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@null"
@@ -153,7 +149,6 @@
                 android:background="@drawable/bg_border_calve">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tieSurname"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@null"
@@ -173,7 +168,6 @@
                 android:background="@drawable/bg_border_calve">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tieSSurname"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@null"
@@ -193,7 +187,6 @@
                 android:background="@drawable/bg_border_calve">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tieMobileNo"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@null"
@@ -213,7 +206,6 @@
                 android:background="@drawable/bg_border_calve">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tieEmail"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@null"

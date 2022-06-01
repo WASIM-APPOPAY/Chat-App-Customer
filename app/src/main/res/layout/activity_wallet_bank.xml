@@ -20,7 +20,6 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/layoutFromAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -132,7 +131,6 @@
                 android:background="@color/grey_light_secondary" />
 
             <LinearLayout
-                android:id="@+id/layoutBankCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -169,7 +167,6 @@
                 android:background="@color/grey_light_secondary" />
 
             <LinearLayout
-                android:id="@+id/layoutBankCurrency"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"

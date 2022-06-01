@@ -1,8 +1,7 @@
 package com.stuffrs.newappopay.stuffers_business.api;
 
 import com.google.gson.JsonObject;
-import com.stuffrs.newappopay.stuffers_business.fragments.bottom.chatnotification.MyResponse;
-import com.stuffrs.newappopay.stuffers_business.fragments.bottom.chatnotification.Sender;
+
 import com.stuffrs.newappopay.stuffers_business.models.Country.CountryCodeResponse;
 import com.stuffrs.newappopay.stuffers_business.models.Product.ProductResponse;
 import com.stuffrs.newappopay.stuffers_business.models.bank.BankCurrencyResponse;
@@ -104,14 +103,7 @@ public interface MainAPIInterface<R extends Retrofit> {
     Call<JsonObject> getBankFundCommission(@Header("Authorization") String xAccessToken);
 
 
-    @Headers(
-            {
-                    "Content-Type:application/json",
-                    "Authorization:key=AAAAwXpGhFM:APA91bG3nRW1fJKnmOdwfd2jlFhCDoYVbH9XMQ_pmFpBlohXsNYK3cnSea_nj_5ns3W81Eb6Fjo5OW1QlvJYfyDGOEGMXz2bYUd-Xk4jYVeZeKOjwZWFdLZU5VTEUBkNtv8DwHpDZwtn"
-            }
-    )
-    @POST("fcm/send")
-    Call<MyResponse> sendNotification(@Body Sender body);
+
 
 
     @Headers({

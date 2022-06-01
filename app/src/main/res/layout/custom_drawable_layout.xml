@@ -64,7 +64,6 @@
         <!--01 for Profile-->
 
         <LinearLayout
-            android:id="@+id/layoutAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -97,7 +96,6 @@
 
 
         <LinearLayout
-            android:id="@+id/layoutProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -165,7 +163,6 @@
         <!--02.for terminal-->
         <LinearLayout
             android:visibility="gone"
-            android:id="@+id/layoutTerminal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -199,7 +196,6 @@
 
         <net.cachapa.expandablelayout.ExpandableLayout
             android:visibility="gone"
-            android:id="@+id/layoutExpand"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
@@ -223,14 +219,12 @@
                     android:textColor="@color/icon_color" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/email1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colortext"
                     android:textColorHint="@color/colorhint">
 
                     <com.stuffrs.newappopay.stuffers_business.views.MyEditText
-                        android:id="@+id/edtUserName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -266,7 +260,6 @@
 
                     <com.stuffrs.newappopay.stuffers_business.views.MyEditText
 
-                        android:id="@+id/edtUserPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -317,7 +310,6 @@
         <!--03.layout kyc-->
         <LinearLayout
             android:visibility="gone"
-            android:id="@+id/layoutKyc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -350,7 +342,6 @@
         <!--04.layout card-->
         <LinearLayout
             android:visibility="gone"
-            android:id="@+id/layoutLinkBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -382,7 +373,6 @@
         <!--05.layout overview-->
         <LinearLayout
             android:visibility="gone"
-            android:id="@+id/layoutOverview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -417,7 +407,6 @@
 
         <!--06.layout payment-->
         <LinearLayout
-            android:id="@+id/layoutPayment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -450,7 +439,6 @@
             android:background="@color/grey_light_secondary" />
         <!--07.layout mall-->
         <LinearLayout
-            android:id="@+id/layoutMall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -484,7 +472,6 @@
             android:background="@color/grey_light_secondary" />
         <!--08.layout setting-->
         <LinearLayout
-            android:id="@+id/layoutSetting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -517,7 +504,6 @@
             android:background="@color/grey_light_secondary" />
         <!--09.layout logout-->
         <LinearLayout
-            android:id="@+id/layoutLogout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -550,7 +536,6 @@
             android:background="@color/grey_light_secondary" />
 
         <LinearLayout
-            android:id="@+id/layoutVersion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -565,7 +550,6 @@
                 android:src="@drawable/ic_logout_drawable" />
 
             <com.stuffrs.newappopay.stuffers_business.views.MyTextView
-                android:id="@+id/tvVersion"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

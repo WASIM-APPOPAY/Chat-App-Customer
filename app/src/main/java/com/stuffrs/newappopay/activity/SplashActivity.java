@@ -104,6 +104,7 @@ public class SplashActivity extends AppCompatActivity implements LanguageListene
         if (!StringUtils.isEmpty(mTandc)) {
             tvCheck.setChecked(true);
         }
+
         tvAgree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,9 +122,9 @@ public class SplashActivity extends AppCompatActivity implements LanguageListene
                     showPermission(getString(R.string.permission_desc_storage));
                 }
 
-
             }
         });
+
 
         String tapInfoText1 = "<font color='#029DDC'>" + getString(R.string.info_split1) + " " + "&quot;" + getString(R.string.info_split2) + "&quot;" + "</font>" + "<font color='#029DDC'>" + " " + getString(R.string.info_split3) + "</font>";
         String tapInfoText2 = "<font color='#FB8310'>" + " " + getString(R.string.info_split4) + "</font>";

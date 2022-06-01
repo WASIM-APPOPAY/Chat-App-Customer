@@ -63,7 +63,6 @@
         android:weightSum="4">
         <!--layout send-->
         <LinearLayout
-            android:id="@+id/lSend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -160,7 +159,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layoutMyCards"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

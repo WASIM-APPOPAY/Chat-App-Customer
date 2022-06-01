@@ -2,35 +2,29 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_manage"
         android:checked="true"
 
         android:icon="@drawable/ic_send_new"
         android:title="Manage Account"
         app:showAsAction="always" />
 <item
-        android:id="@+id/action_profile"
-        android:checked="true"
+    android:checked="true"
         android:title="Profile"
         app:showAsAction="never" />
 <item
-        android:id="@+id/action_payment"
-        android:checked="true"
+    android:checked="true"
         android:title="Payment"
         app:showAsAction="never" />
 <item
-        android:id="@+id/action_mall"
-        android:checked="true"
+    android:checked="true"
         android:title="Mall"
         app:showAsAction="never" />
 <item
-        android:id="@+id/action_setting"
-        android:checked="true"
+    android:checked="true"
         android:title="Setting"
         app:showAsAction="never" />
 <item
-        android:id="@+id/action_logout"
-        android:checked="true"
+    android:checked="true"
         android:title="Logout"
         app:showAsAction="never" />
 

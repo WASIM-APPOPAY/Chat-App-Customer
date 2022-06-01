@@ -1,5 +1,8 @@
 package com.stuffrs.newappopay.stuffers_business.activity.wallet;
 
+import static com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager.KEY_ACCESSTOKEN;
+import static com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager.KEY_USER_DETIALS;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -17,7 +20,6 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
@@ -25,8 +27,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.stuffrs.newappopay.stuffers_business.AppoPayApplication;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.stuffrs.newappopay.R;
+import com.stuffrs.newappopay.stuffers_business.AppoPayApplication;
 import com.stuffrs.newappopay.stuffers_business.activity.contact.ContactDemoActivity;
 import com.stuffrs.newappopay.stuffers_business.adapter.recyclerview.ReceiverAdapter;
 import com.stuffrs.newappopay.stuffers_business.api.ApiUtils;
@@ -35,14 +39,9 @@ import com.stuffrs.newappopay.stuffers_business.communicator.CarrierSelectListen
 import com.stuffrs.newappopay.stuffers_business.communicator.CustomCountryListener;
 import com.stuffrs.newappopay.stuffers_business.communicator.ReceiverListener;
 import com.stuffrs.newappopay.stuffers_business.communicator.TransactionPinListener;
-
-import com.stuffrs.newappopay.stuffers_business.fragments.bottom.chatnotification.Data;
-import com.stuffrs.newappopay.stuffers_business.fragments.bottom.chatnotification.MyResponse;
-import com.stuffrs.newappopay.stuffers_business.fragments.bottom.chatnotification.Sender;
-import com.stuffrs.newappopay.stuffers_business.fragments.bottom.chatnotification.Token;
+import com.stuffrs.newappopay.stuffers_business.fragments.bottom_fragment.BottotmPinFragment;
 import com.stuffrs.newappopay.stuffers_business.fragments.dialog.CarrierDialogFragment;
 import com.stuffrs.newappopay.stuffers_business.fragments.dialog.CustomCountryDialogFragment;
-import com.stuffrs.newappopay.stuffers_business.fragments.bottom_fragment.BottotmPinFragment;
 import com.stuffrs.newappopay.stuffers_business.models.Product.Amount;
 import com.stuffrs.newappopay.stuffers_business.models.Product.Product;
 import com.stuffrs.newappopay.stuffers_business.models.Product.ProductResponse;
@@ -56,15 +55,7 @@ import com.stuffrs.newappopay.stuffers_business.utils.Helper;
 import com.stuffrs.newappopay.stuffers_business.views.MyButton;
 import com.stuffrs.newappopay.stuffers_business.views.MyEditText;
 import com.stuffrs.newappopay.stuffers_business.views.MyTextView;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
-import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -80,9 +71,6 @@ import io.michaelrocks.libphonenumber.android.Phonenumber;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager.KEY_ACCESSTOKEN;
-import static com.stuffrs.newappopay.stuffers_business.utils.DataVaultManager.KEY_USER_DETIALS;
 
 public class MobileRechargeActivity extends AppCompatActivity implements CustomCountryListener, CarrierSelectListener, ReceiverListener, TransactionPinListener {
 

@@ -19,7 +19,6 @@
             android:orientation="horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ivProfile"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:padding="15dp"
@@ -167,7 +166,6 @@ android:text="$15"
             android:orientation="horizontal">
 
             <com.stuffrs.newappopay.stuffers_business.views.MyButton
-                android:id="@+id/btnRemoveCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

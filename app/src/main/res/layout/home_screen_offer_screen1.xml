@@ -42,7 +42,6 @@
                 android:src="@drawable/nivea" />
 
             <com.stuffrs.newappopay.stuffers_business.views.MyTextView
-                android:id="@+id/airlineName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

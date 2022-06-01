@@ -23,7 +23,6 @@
             android:layout_marginRight="20dp">
 
             <ImageView
-                android:id="@+id/saloonUstara"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_alignParentStart="true"
@@ -33,7 +32,6 @@
 
 
             <ImageView
-                android:id="@+id/saloonChair"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -41,7 +39,6 @@
 
 
             <ImageView
-                android:id="@+id/saloonScizer"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_alignParentRight="true"
@@ -91,7 +88,6 @@
 
 
             <LinearLayout
-                android:id="@+id/llVerification3"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginTop="10dp"
@@ -260,7 +256,6 @@
 
 
         <LinearLayout
-            android:id="@+id/ll103"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"

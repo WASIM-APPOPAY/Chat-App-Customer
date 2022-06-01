@@ -85,7 +85,6 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/email1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -138,7 +137,6 @@
                     app:boxBackgroundMode="none">
 
                     <EditText
-                        android:id="@+id/edtCate"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="#0000"
@@ -192,7 +190,6 @@
                     app:boxBackgroundMode="none">
 
                     <EditText
-                        android:id="@+id/edtDesc"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="#0000"
@@ -238,7 +235,6 @@
                     app:boxBackgroundMode="none">
 
                     <EditText
-                        android:id="@+id/edtLocation"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="#0000"
@@ -255,7 +251,6 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tvNext"
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

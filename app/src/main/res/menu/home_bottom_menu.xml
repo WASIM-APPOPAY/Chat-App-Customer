@@ -2,14 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_home"
         android:checked="true"
         android:icon="@drawable/ic_home"
         android:title="@string/info_home" />
 
 
     <item
-        android:id="@+id/action_scan"
         android:icon="@drawable/ic_scan"
         android:title="UnionPay" />
 
@@ -21,7 +19,6 @@
 
 
     <item
-        android:id="@+id/action_bank"
         android:icon="@drawable/ic_transfer_money"
         app:iconTint="#052F73"
         android:title="@string/info_transfer" />

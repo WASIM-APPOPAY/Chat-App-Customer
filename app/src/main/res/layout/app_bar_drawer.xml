@@ -21,7 +21,6 @@
         android:background="@color/white">
 
         <com.volcaniccoder.bottomify.BottomifyNavigationView
-            android:id="@+id/bottomify_nav"
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:background="?attr/selectableItemBackgroundBorderless"

@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/rootHomeLayout"
     app:ignore="NamespaceTypo">
 
     <androidx.core.widget.NestedScrollView
@@ -76,7 +75,6 @@
                     app:tabTextColor="@color/colorPrimary" />
                 <LinearLayout
                     android:layout_marginEnd="10dp"
-                    android:id="@+id/layoutExists"
                     style="@style/LayoutFundLinearStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

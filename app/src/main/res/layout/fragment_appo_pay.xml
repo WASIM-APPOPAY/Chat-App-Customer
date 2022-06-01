@@ -129,7 +129,6 @@
                         android:src="@drawable/user_chat" />
                 <LinearLayout
                     android:layout_toRightOf="@+id/ivUser"
-                    android:id="@+id/layoutFromAccount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
