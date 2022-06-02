@@ -4,7 +4,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="info_intro"><![CDATA[Buy Sell, Pay & Chat.\nAccepted at 52,000,000 Merchants Globally]]></string>
     <string name="info_select_language">SELECT LANGUAGE</string>
-    <string name="permission_desc_storage">AppOpay Business Need Storage Access Permission to work properly.</string>
+    <string name="permission_desc_storage">AppOpay Business Need Storage,Camera,Audio and Contact Access Permission to work properly.</string>
     <string name="info_split1"> Tap</string>
     <string name="info_split2"> Agree and Continue</string>
     <string name="info_split3"> to accept the</string>

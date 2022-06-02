@@ -75,7 +75,7 @@ public class SplashActivity extends AppCompatActivity implements LanguageListene
 
                             }
                         } else {
-                            ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2298);
+                            ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_CONTACTS, Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA}, 2298);
                         }
                     }
                 });
@@ -116,7 +116,7 @@ public class SplashActivity extends AppCompatActivity implements LanguageListene
                     DataVaultManager.getInstance(SplashActivity.this).saveTerm("check");
                     User loggedInUser = helper.getLoggedInUser();
                     String s = new Gson().toJson(loggedInUser);
-                    Log.e(TAG, "onClick: "+s );
+                    Log.e(TAG, "onClick: " + s);
                     startActivity(new Intent(SplashActivity.this, helper.getLoggedInUser() != null ? HomeActivity.class : NumberActivity.class));
                 } else {
                     showPermission(getString(R.string.permission_desc_storage));
@@ -154,12 +154,14 @@ public class SplashActivity extends AppCompatActivity implements LanguageListene
         if (requestCode == 2296) {
             if (SDK_INT >= Build.VERSION_CODES.R) {
                 if (Environment.isExternalStorageManager()) {
-                    if (!tvCheck.isChecked()) {
+                    /*if (!tvCheck.isChecked()) {
                         Toast.makeText(SplashActivity.this, getString(R.string.info_term_condition), Toast.LENGTH_SHORT).show();
                         return;
-                    }
-                    DataVaultManager.getInstance(SplashActivity.this).saveTerm("check");
-                    startActivity(new Intent(SplashActivity.this, helper.getLoggedInUser() != null ? HomeActivity.class : NumberActivity.class));
+                    }*/
+                    //DataVaultManager.getInstance(SplashActivity.this).saveTerm("check");
+                    //startActivity(new Intent(SplashActivity.this, helper.getLoggedInUser() != null ? HomeActivity.class : NumberActivity.class));
+                    ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.READ_CONTACTS, Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA}, 2299);
+
                 } else {
                     showPermission(getString(R.string.permission_desc_storage));
                 }
@@ -174,7 +176,27 @@ public class SplashActivity extends AppCompatActivity implements LanguageListene
             if (grantResults.length > 0) {
                 boolean p1 = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                 boolean p2 = grantResults[1] == PackageManager.PERMISSION_GRANTED;
-                if (p1 && p2) {
+                boolean p3 = grantResults[2] == PackageManager.PERMISSION_GRANTED;
+                boolean p4 = grantResults[3] == PackageManager.PERMISSION_GRANTED;
+                boolean p5 = grantResults[4] == PackageManager.PERMISSION_GRANTED;
+
+                if (p1 && p2 && p3 && p4 && p5) {
+                    if (!tvCheck.isChecked()) {
+                        Toast.makeText(SplashActivity.this, getString(R.string.info_term_condition), Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    DataVaultManager.getInstance(SplashActivity.this).saveTerm("check");
+                    startActivity(new Intent(SplashActivity.this, helper.getLoggedInUser() != null ? HomeActivity.class : NumberActivity.class));
+                } else {
+                    showPermission(getString(R.string.permission_desc_storage));
+                }
+            }
+        } else if (requestCode == 2299) {
+            if (grantResults.length > 0) {
+                boolean p1 = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                boolean p2 = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+                boolean p3 = grantResults[2] == PackageManager.PERMISSION_GRANTED;
+                if (p1 && p2 && p3) {
                     if (!tvCheck.isChecked()) {
                         Toast.makeText(SplashActivity.this, getString(R.string.info_term_condition), Toast.LENGTH_SHORT).show();
                         return;
@@ -194,7 +216,13 @@ public class SplashActivity extends AppCompatActivity implements LanguageListene
         } else {
             int result1 = ContextCompat.checkSelfPermission(SplashActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE);
             int result2 = ContextCompat.checkSelfPermission(SplashActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-            return result1 == PackageManager.PERMISSION_GRANTED && result2 == PackageManager.PERMISSION_GRANTED;
+            int result3 = ContextCompat.checkSelfPermission(SplashActivity.this, Manifest.permission.READ_CONTACTS);
+            int result4 = ContextCompat.checkSelfPermission(SplashActivity.this, Manifest.permission.RECORD_AUDIO);
+            int result5 = ContextCompat.checkSelfPermission(SplashActivity.this, Manifest.permission.CAMERA);
+
+            return result1 == PackageManager.PERMISSION_GRANTED && result2 == PackageManager.PERMISSION_GRANTED
+                    && result3 == PackageManager.PERMISSION_GRANTED && result4 == PackageManager.PERMISSION_GRANTED
+                    && result5 == PackageManager.PERMISSION_GRANTED;
         }
     }
 
